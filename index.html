@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>黒尾鉄朗.com</title>
+    <title>KUROO.com</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
@@ -18,21 +18,12 @@
             line-height: 1.6;
             min-height: 100vh;
         }
-                /* 點點像素 GIF 樣式 */
-        .pixel-gif {
-            width: 50px; /* 妳可以根據 GIF 的大小調整寬度 */
-            height: auto;
-            margin-top: 30px;
-            image-rendering: pixelated; /* 讓像素圖保持清晰不模糊 */
-            opacity: 0.8;
-        }
 
-
-        /* 魔法貓咪區域：確保在手機上也能完美居中 */
+        /* 魔法貓咪區域 */
         .magic-cat {
-            font-family: 'Courier New', Courier, monospace; /* 強制等寬 */
+            font-family: 'Courier New', Courier, monospace;
             white-space: pre;
-            font-size: 13px; /* 稍微縮小一點點，防止窄螢幕換行 */
+            font-size: 13px;
             line-height: 1.25;
             color: #b20000;
             margin-bottom: 30px;
@@ -50,7 +41,11 @@
             text-align: center;
         }
 
-
+        /* 倒數計時區 */
+        .timer-box {
+            text-align: center;
+            margin-bottom: 40px;
+        }
 
         .timer-display {
             font-size: 1.1rem;
@@ -59,29 +54,52 @@
             letter-spacing: 1.5px;
         }
 
-        /* 自我介紹區 */
-          .bio-section {
-            max-width: 320px;
-            width: 100%;
-            border-top: 1px solid #f5f5f5;    /* 這是原本上面的線 */
-            padding-top: 30px;
-            margin-bottom: 30px;              /* 增加一點間距 */
-            border-bottom: 1px solid #f5f5f5; /* ← 加上這一行，下面就會有線了！ */
-            padding-bottom: 30px;             /* 加上這行，讓文字離底部的線有一點呼吸空間 */
+        /* 即時限動區 */
+        .status-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            margin-top: 12px;
+            font-size: 10px;
+            letter-spacing: 1px;
+            color: #b20000;
+            opacity: 0.8;
+            animation: fadeInStatus 2s ease-in;
         }
 
+        .dot {
+            width: 6px;
+            height: 6px;
+            background-color: #b20000;
+            border-radius: 50%;
+            animation: blink 1.5s infinite;
+        }
+
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+        @keyframes fadeInStatus { from { opacity: 0; transform: translateY(5px); } to { opacity: 0.8; transform: translateY(0); } }
+
+        /* 自我介紹區 - 上下都有灰線 */
+        .bio-section {
+            max-width: 320px;
+            width: 100%;
+            border-top: 1px solid #f5f5f5;
+            border-bottom: 1px solid #f5f5f5;
+            padding: 30px 0;
+            margin-bottom: 30px;
+        }
 
         .bio-text {
-            font-size: 11px; /* 妳要的字再小一點點 */
+            font-size: 11px;
             color: #999999;
             text-align: justify;
             white-space: pre-wrap;
             opacity: 0.8;
         }
 
-        /* 底部按鈕 */
+        /* 底部連結 */
         .nav-links {
-            margin-top: 60px;
+            margin-top: 30px;
             display: flex;
             gap: 20px;
         }
@@ -92,47 +110,38 @@
             font-size: 10px;
             letter-spacing: 2px;
             transition: 0.3s;
-            border-bottom: 1px solid transparent;
         }
 
-        .link-item:hover {
-            color: #b20000;
-            border-bottom: 1px solid #b20000;
-        }
+        .link-item:hover { color: #b20000; }
     </style>
 </head>
 <body>
 
+    <div class="magic-cat"><span class="cat-text">⭒ birthday countdown</span>
+ ⠀⠀/\ 
+ ╭ /⠀\ ╮
+(ᥩ𓏼︲⩊︲)つ━☆・。 
+⊂⠀⠀⠀ノ⠀⠀⠀・゜+. 
+しーＪ⠀⠀⠀⠀°。+</div>
+
+    <div class="timer-box">
+        <div id="timer" class="timer-display">00d 00h 00m 00s</div>
+        <div class="status-bar">
+            <span class="dot"></span> 
+            <span class="status-text">NOW IN ❘ King Gnu 🐃 & 學測沼 (ง'̀-'́)ง</span>
+        </div>
     </div>
-        <div class="magic-cat">
-
-          ⠀⭒
-         ⠀⠀/\ 
-         ╭ /⠀\ ╮
-        (ᥩ𓏼︲⩊︲)つ━☆・。 
-        ⊂⠀⠀⠀ノ⠀⠀⠀・゜+. 
-        しーＪ⠀⠀⠀⠀°。+
-    </div>
-
-
-    <div class="timer-box">        <span class="cat-text">birthday countdown</span>
-        <div id="timer" class="timer-display">00d 00h 00m 00s</
-
-
 
     <div class="bio-section">
-        <div class="bio-text">自我介紹一下我是醺醺／卡歐哩，其他自取也可以知道在叫我就好！
-            
-日常是打單機遊戲、追王牛、當阿夢、滑推特。
+        <div class="bio-text">自我介紹一下我是醺，自取也可以知道在叫我就好！
+日常是打單機遊戲、追王牛（要開演唱會了嗚呼！）、當阿夢、滑推特。
 
 推特都泡在日區趨勢跟很雜的FA和夢小說，喜歡貼連結來臉書做集中串。貼文幾乎是日常、碎碎念（看我最近迷什麼）、偶爾出去玩。
 
-大概就醬平常比較多轉發，愛去留言區打滾（打滾）也可以隨便標我，我會很開心。有版面潔癖，東西都有分相簿如果想要看ㄉ話！
+大概就醬平常比較多轉發，愛去留言區打滾。也可以隨便標我，我會很開心！有版面潔癖，東西都有分相簿如果想要看ㄉ話
             
 私訊只收交易和委託相關ㄉ安捏⋯⋯</div>
     </div>
-        <img src="IMG_5045.gif" class="pixel-gif" alt="pixel decor">
-
 
     <div class="nav-links">
         <a href="https://lit.link/zh-tw/superotakukaori" class="link-item">LIT.LINK</a>
@@ -153,6 +162,5 @@
         setInterval(updateTimer, 1000);
         updateTimer();
     </script>
-
 </body>
 </html>
