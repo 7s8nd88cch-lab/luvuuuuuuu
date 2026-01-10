@@ -8,26 +8,37 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
-            background-color: #ffffff; /* 白底 */
-            color: #888888; /* 灰字 */
+            background-color: #ffffff;
+            color: #888888;
             font-family: 'Helvetica Neue', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
             padding: 50px 25px;
             line-height: 1.6;
+            min-height: 100vh;
         }
 
-        /* 魔法貓咪區域：確保顏文字不跑版 */
+        /* 魔法貓咪區域：確保在手機上也能完美居中 */
         .magic-cat {
-            font-family: monospace; /* 必須用等寬字體 */
-            white-space: pre; /* 保留空白格 */
-            font-size: 14px;
-            line-height: 1.2;
-            color: #b20000; /* 給貓咪一點音駒紅 */
+            font-family: 'Courier New', Courier, monospace; /* 強制等寬 */
+            white-space: pre;
+            font-size: 13px; /* 稍微縮小一點點，防止窄螢幕換行 */
+            line-height: 1.25;
+            color: #b20000;
             margin-bottom: 30px;
-            text-align: left; /* 顏文字通常左對齊才不會散開 */
+            display: block;
             width: fit-content;
+        }
+
+        .cat-text {
+            font-family: sans-serif;
+            font-size: 10px;
+            color: #cccccc;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+            display: block;
+            text-align: center;
         }
 
         /* 倒數計時 */
@@ -37,25 +48,26 @@
         }
 
         .timer-display {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 300;
-            color: #aaaaaa;
-            letter-spacing: 1px;
+            color: #999999;
+            letter-spacing: 1.5px;
         }
 
         /* 自我介紹區 */
         .bio-section {
-            max-width: 350px;
+            max-width: 320px; /* 再稍微縮小一點點，更有集中感 */
             width: 100%;
-            border-top: 1px solid #f0f0f0;
+            border-top: 1px solid #f5f5f5;
             padding-top: 30px;
         }
 
         .bio-text {
-            font-size: 12px; /* 字體縮小 */
+            font-size: 11px; /* 妳要的字再小一點點 */
             color: #999999;
             text-align: justify;
             white-space: pre-wrap;
+            opacity: 0.8;
         }
 
         /* 底部按鈕 */
@@ -68,20 +80,21 @@
         .link-item {
             text-decoration: none;
             color: #cccccc;
-            font-size: 11px;
-            letter-spacing: 1px;
+            font-size: 10px;
+            letter-spacing: 2px;
             transition: 0.3s;
+            border-bottom: 1px solid transparent;
         }
 
         .link-item:hover {
             color: #b20000;
+            border-bottom: 1px solid #b20000;
         }
     </style>
 </head>
 <body>
 
-    <div class="magic-cat">
-⠀⭒ birthday countdown
+    <div class="magic-cat"><span class="cat-text">⭒ birthday countdown</span>
  ⠀⠀/\ 
  ╭ /⠀\ ╮
 (ᥩ𓏼︲⩊︲)つ━☆・。 
@@ -93,13 +106,11 @@
     </div>
 
     <div class="bio-section">
-        <div class="bio-text">
-自我介紹一下，日常是學測、追王牛新情報（要開演唱會了嗚呼！）、當阿夢、滑推特。
+        <div class="bio-text">自我介紹一下，日常是學測、追王牛新情報（要開演唱會了嗚呼！）、當阿夢、滑推特。
 
 推特都泡在日區趨勢跟很雜的FA和夢小說，喜歡貼連結來臉書做集中串。貼文幾乎是日常、碎碎念（看我最近迷什麼）、偶爾出去玩也可以隨便標我，我會很開心。
 
-大概就醬平常比較多轉發，愛去留言區玩。有版面潔癖，東西都有分相簿如果想要看ㄉ話私訊只收交易和委託相關ㄉ⋯⋯
-        </div>
+大概就醬平常比較多轉發，愛去留言區玩。有版面潔癖，東西都有分相簿如果想要看ㄉ話私訊只收交易和委託相關ㄉ⋯⋯</div>
     </div>
 
     <div class="nav-links">
