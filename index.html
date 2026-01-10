@@ -50,11 +50,43 @@
             text-align: center;
         }
 
-        /* 倒數計時 */
-        .timer-box {
-            text-align: center;
-            margin-bottom: 40px;
+
+
+        /* 這裡加在妳的 <style> 標籤內 */
+        .status-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            margin-top: 12px;
+            font-size: 10px;
+            letter-spacing: 1px;
+            color: #b20000;
+            opacity: 0.8;
+            /* 讓整個區塊緩慢淡入 */
+            animation: fadeInStatus 2s ease-in;
         }
+
+        /* 呼吸燈小紅點 */
+        .dot {
+            width: 6px;
+            height: 6px;
+            background-color: #b20000;
+            border-radius: 50%;
+            animation: blink 1.5s infinite;
+        }
+
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes fadeInStatus {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 0.8; transform: translateY(0); }
+        }
+
 
         .timer-display {
             font-size: 1.1rem;
@@ -107,18 +139,27 @@
 </head>
 <body>
 
-    <div class="magic-cat">
- ⠀⠀⭒
-   /\ 
- ╭ /⠀\ ╮
-(ᥩ𓏼︲⩊︲)つ━☆・。 
-⊂⠀⠀⠀ノ⠀⠀⠀・゜+. 
-しーＪ⠀⠀⠀⠀°。+</div>
-    <span class="cat-text"> birthday countdown</span>
 
     <div class="timer-box">
         <div id="timer" class="timer-display">00d 00h 00m 00s</div>
     </div>
+        <div class="magic-cat">
+        <span class="cat-text">birthday countdown</span>
+         ⠀⭒
+         ⠀⠀/\ 
+         ╭ /⠀\ ╮
+        (ᥩ𓏼︲⩊︲)つ━☆・。 
+        ⊂⠀⠀⠀ノ⠀⠀⠀・゜+. 
+        しーＪ⠀⠀⠀⠀°。+
+    </div>
+
+    <div class="timer-box">
+        <div id="timer" class="timer-display">00d 00h 00m 00s</div>
+        
+        <div style="font-size: 10px; color: #b20000; letter-spacing: 1px; margin-top: 10px; opacity: 0.7;">
+            NOW IN ❘ King Gnu 🐃 & 學測沼 (ง'̀-'́)ง
+        </div>
+
 
     <div class="bio-section">
         <div class="bio-text">自我介紹一下我是醺醺／卡歐哩，其他自取也可以知道在叫我就好！
