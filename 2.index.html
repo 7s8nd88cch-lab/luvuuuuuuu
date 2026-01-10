@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KUROO | 11.17 Countdown</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background-color: #0a0a0a; /* 深邃黑 */
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            color: #ffffff;
+        }
+
+        /* 頂部紅線裝飾 */
+        .top-accent {
+            position: fixed;
+            top: 0; width: 100%; height: 3px;
+            background: #b20000;
+        }
+
+        /* 中央標題 */
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .name {
+            font-size: 3.5rem;
+            font-weight: 900;
+            letter-spacing: 12px;
+            color: #b20000;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        .event {
+            font-size: 0.8rem;
+            letter-spacing: 4px;
+            opacity: 0.6;
+        }
+
+        /* 倒數計時數字 */
+        .timer-display {
+            font-size: 2.5rem;
+            font-weight: 200;
+            margin-bottom: 80px;
+            font-variant-numeric: tabular-nums; /* 讓數字寬度一致，跳動時不晃動 */
+        }
+
+        /* 妳要的小小灰色超連結 */
+        .footer-link {
+            position: fixed;
+            bottom: 40px;
+            text-decoration: none;
+            color: #555555; /* 灰色 */
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+            border-bottom: 1px solid transparent;
+        }
+
+        .footer-link:hover {
+            color: #b20000; /* 摸到會變紅色 */
+            border-bottom: 1px solid #b20000;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-accent"></div>
+
+    <div class="header">
+        <div class="name">KUROO</div>
+        <div class="event">BIRTHDAY COUNTDOWN</div>
+    </div>
+
+    <div class="timer-display" id="timer">
+        00d 00h 00m 00s
+    </div>
+
+    <a href="這裡放妳的Litlink網址" class="footer-link" target="_blank">Lit.link / Kuroo Tetsuro</a>
+
+    <script>
+        const birthday = new Date("Nov 17, 2026 00:00:00").getTime();
+
+        function updateTimer() {
+            const now = new Date().getTime();
+            const distance = birthday - now;
+
+            const d = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // 格式化數字，補 0
+            const format = (num) => num.toString().padStart(2, '0');
+
+            document.getElementById("timer").innerHTML = 
+                `${d}d ${format(h)}h ${format(m)}m ${format(s)}s`;
+
+            if (distance < 0) {
+                document.getElementById("timer").innerHTML = "HAPPY BIRTHDAY!";
+            }
+        }
+
+        setInterval(updateTimer, 1000);
+        updateTimer(); // 立即執行一次避免空白
+    </script>
+
+</body>
+</html>
