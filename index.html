@@ -3,115 +3,150 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>黒尾鉄朗.com</title>
+    <title>黒尾鉄朗.com</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
-            background-color: #0a0a0a; /* 深邃黑 */
-            height: 100vh;
+            background-color: #ffffff; /* 白底 */
+            color: #666666; /* 灰字 */
+            font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            color: #ffffff;
+            padding: 40px 20px;
+            line-height: 1.8;
         }
 
-        /* 頂部紅線裝飾 */
-        .top-accent {
-            position: fixed;
-            top: 0; width: 100%; height: 3px;
-            background: #b20000;
+        /* 小貓頭像 */
+        .cat-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid #f0f0f0;
+            object-fit: cover;
+            margin-bottom: 20px;
         }
 
-        /* 中央標題 */
-        .header {
+        /* 倒數計時區 */
+        .timer-container {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
+            background: #fafafa;
+            padding: 20px;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 400px;
         }
 
-        .name {
-            font-size: 3.5rem;
-            font-weight: 900;
-            letter-spacing: 12px;
-            color: #b20000;
-            margin-bottom: 5px;
-            text-transform: uppercase;
-        }
-
-        .event {
+        .timer-title {
             font-size: 0.8rem;
-            letter-spacing: 4px;
-            opacity: 0.6;
+            letter-spacing: 2px;
+            color: #999;
+            margin-bottom: 10px;
         }
 
-        /* 倒數計時數字 */
         .timer-display {
-            font-size: 2.5rem;
-            font-weight: 200;
-            margin-bottom: 80px;
-            font-variant-numeric: tabular-nums; /* 讓數字寬度一致，跳動時不晃動 */
+            font-size: 1.8rem;
+            font-weight: 300;
+            color: #b20000; /* 數字保留一點音駒紅點綴 */
+            font-variant-numeric: tabular-nums;
         }
 
-        /* 妳要的小小灰色超連結 */
-        .footer-link {
-            position: fixed;
-            bottom: 40px;
+        /* 自我介紹區 */
+        .bio-container {
+            max-width: 450px;
+            width: 100%;
+            background: #ffffff;
+            padding: 10px;
+        }
+
+        .bio-text {
+            font-size: 0.95rem;
+            white-space: pre-wrap; /* 保留換行 */
+            word-wrap: break-word;
+        }
+
+        .kaomoji {
+            color: #b20000;
+            font-weight: bold;
+            margin: 10px 0;
+            display: block;
+        }
+
+        /* 底部按鈕 */
+        .footer-links {
+            margin-top: 50px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .btn {
             text-decoration: none;
-            color: #555555; /* 灰色 */
-            font-size: 0.75rem;
-            letter-spacing: 1px;
-            transition: color 0.3s;
-            border-bottom: 1px solid transparent;
+            color: #888888;
+            font-size: 0.8rem;
+            padding: 8px 20px;
+            border: 1px solid #eeeeee;
+            border-radius: 50px;
+            transition: all 0.3s;
         }
 
-        .footer-link:hover {
-            color: #b20000; /* 摸到會變紅色 */
-            border-bottom: 1px solid #b20000;
+        .btn:hover {
+            background: #fafafa;
+            border-color: #b20000;
+            color: #b20000;
+        }
+
+        .litlink-btn {
+            background: #fdf2f2;
+            color: #b20000;
+            border: none;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
 
-    <div class="top-accent"></div>
+    <img src="這裡放妳的小貓圖片網址" class="cat-avatar" alt="Cat">
 
-    <div class="header">
-        <div class="name">KUROO</div>
-        <div class="event">BIRTHDAY COUNTDOWN</div>
+    <span class="kaomoji">這裡貼上妳的顏文字</span>
+
+    <div class="timer-container">
+        <div class="timer-title">HAPPY BIRTHDAY COUNTDOWN</div>
+        <div id="timer" class="timer-display">00d 00h 00m 00s</div>
     </div>
 
-    <div class="timer-display" id="timer">
-        00d 00h 00m 00s
+    <div class="bio-container">
+        <div class="bio-text">
+自我介紹一下，日常是學測、追王牛新情報（要開演唱會了嗚呼！）、當阿夢、滑推特。
+
+推特都泡在日區趨勢跟很雜的FA和夢小說，喜歡貼連結來臉書做集中串。貼文幾乎是日常、碎碎念（看我最近迷什麼）、偶爾出去玩也可以隨便標我，我會很開心！
+
+大概就醬平常比較多轉發，愛去留言區玩。有版面潔癖，東西都有分相簿如果想要看ㄉ話私訊只收交易和委託相關ㄉ⋯⋯
+        </div>
     </div>
 
-    <a href="https://www.facebook.com/yi.pu.xun.li/" class="footer-link" target="_blank">to find meeee </a>
+    <div class="footer-links">
+        <a href="這裡放妳的Litlink網址" class="btn litlink-btn" target="_blank">My Lit.link ❤️</a>
+        <a href="./birthday.html" class="btn">全螢幕倒數模式</a>
+    </div>
 
     <script>
         const birthday = new Date("Nov 17, 2026 00:00:00").getTime();
-
         function updateTimer() {
             const now = new Date().getTime();
             const distance = birthday - now;
-
             const d = Math.floor(distance / (1000 * 60 * 60 * 24));
             const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const s = Math.floor((distance % (1000 * 60)) / 1000);
-
-            // 格式化數字，補 0
             const format = (num) => num.toString().padStart(2, '0');
-
-            document.getElementById("timer").innerHTML = 
-                `${d}d ${format(h)}h ${format(m)}m ${format(s)}s`;
-
-            if (distance < 0) {
-                document.getElementById("timer").innerHTML = "HAPPY BIRTHDAY!";
-            }
+            document.getElementById("timer").innerHTML = `${d}d ${format(h)}h ${format(m)}m ${format(s)}s`;
         }
-
         setInterval(updateTimer, 1000);
-        updateTimer(); // 立即執行一次避免空白
+        updateTimer();
     </script>
 
 </body>
