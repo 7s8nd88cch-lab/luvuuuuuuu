@@ -1,37 +1,56 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <title>老公專屬應援站</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>KUROO | 黑尾鐵朗</title>
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background: url('你的照片網址') no-repeat center center fixed; 
-            background-size: cover;
-            font-family: sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+        /* 消除所有預設邊距，確保滿版 */
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
         }
-        .glass-box {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(10px);
-            padding: 30px;
-            border-radius: 20px;
-            text-align: center;
-            border: 1px solid white;
+        
+        body, html { 
+            height: 100%; 
+            width: 100%;
+            overflow: hidden; /* 防止出現雙重捲軸 */
+            background-color: #0d0d0d; 
         }
-        h1 { color: #ff69b4; text-shadow: 1px 1px 2px white; }
+
+        /* 音駒紅頂部裝飾細線，增加一點專業質感 */
+        .top-line { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 4px; 
+            background: #b20000; 
+            z-index: 999; 
+        }
+
+        /* 滿版嵌入容器 */
+        .iframe-container {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
     </style>
 </head>
 <body>
-    <div class="glass-box">
-        <h1>黒尾鉄朗</h1>
-        <p>測試</p>
-        <p>薰兒本人實操（藍色勾勾）</p>
+
+    <div class="top-line"></div>
+
+    <div class="iframe-container">
+        <iframe src="https://lit.link/zh-tw/otkkaori" title="Kuroo Tetsuro Altar"></iframe>
     </div>
+
 </body>
 </html>
-
