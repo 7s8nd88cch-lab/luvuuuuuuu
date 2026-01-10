@@ -3,134 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>黒尾鉄朗.com</title>
+    <title>KUROO.com</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
             background-color: #ffffff; /* 白底 */
-            color: #666666; /* 灰字 */
-            font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+            color: #888888; /* 灰字 */
+            font-family: 'Helvetica Neue', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 40px 20px;
-            line-height: 1.8;
+            padding: 50px 25px;
+            line-height: 1.6;
         }
 
-        /* 小貓頭像 */
-        .cat-avatar {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            border: 3px solid #f0f0f0;
-            object-fit: cover;
-            margin-bottom: 20px;
+        /* 魔法貓咪區域：確保顏文字不跑版 */
+        .magic-cat {
+            font-family: monospace; /* 必須用等寬字體 */
+            white-space: pre; /* 保留空白格 */
+            font-size: 14px;
+            line-height: 1.2;
+            color: #b20000; /* 給貓咪一點音駒紅 */
+            margin-bottom: 30px;
+            text-align: left; /* 顏文字通常左對齊才不會散開 */
+            width: fit-content;
         }
 
-        /* 倒數計時區 */
-        .timer-container {
+        /* 倒數計時 */
+        .timer-box {
             text-align: center;
             margin-bottom: 40px;
-            background: #fafafa;
-            padding: 20px;
-            border-radius: 20px;
-            width: 100%;
-            max-width: 400px;
-        }
-
-        .timer-title {
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            color: #999;
-            margin-bottom: 10px;
         }
 
         .timer-display {
-            font-size: 1.8rem;
+            font-size: 1.2rem;
             font-weight: 300;
-            color: #b20000; /* 數字保留一點音駒紅點綴 */
-            font-variant-numeric: tabular-nums;
+            color: #aaaaaa;
+            letter-spacing: 1px;
         }
 
         /* 自我介紹區 */
-        .bio-container {
-            max-width: 450px;
+        .bio-section {
+            max-width: 350px;
             width: 100%;
-            background: #ffffff;
-            padding: 10px;
+            border-top: 1px solid #f0f0f0;
+            padding-top: 30px;
         }
 
         .bio-text {
-            font-size: 0.95rem;
-            white-space: pre-wrap; /* 保留換行 */
-            word-wrap: break-word;
-        }
-
-        .kaomoji {
-            color: #b20000;
-            font-weight: bold;
-            margin: 10px 0;
-            display: block;
+            font-size: 12px; /* 字體縮小 */
+            color: #999999;
+            text-align: justify;
+            white-space: pre-wrap;
         }
 
         /* 底部按鈕 */
-        .footer-links {
-            margin-top: 50px;
+        .nav-links {
+            margin-top: 60px;
             display: flex;
-            flex-direction: column;
-            gap: 15px;
-            align-items: center;
+            gap: 20px;
         }
 
-        .btn {
+        .link-item {
             text-decoration: none;
-            color: #888888;
-            font-size: 0.8rem;
-            padding: 8px 20px;
-            border: 1px solid #eeeeee;
-            border-radius: 50px;
-            transition: all 0.3s;
+            color: #cccccc;
+            font-size: 11px;
+            letter-spacing: 1px;
+            transition: 0.3s;
         }
 
-        .btn:hover {
-            background: #fafafa;
-            border-color: #b20000;
+        .link-item:hover {
             color: #b20000;
-        }
-
-        .litlink-btn {
-            background: #fdf2f2;
-            color: #b20000;
-            border: none;
-            font-weight: bold;
         }
     </style>
 </head>
 <body>
 
-    <img src="這裡放妳的小貓圖片網址" class="cat-avatar" alt="Cat">
+    <div class="magic-cat">
+⠀⭒
+ ⠀⠀/\ 
+ ╭ /⠀\ ╮
+(ᥩ𓏼︲⩊︲)つ━☆・。 
+⊂⠀⠀⠀ノ⠀⠀⠀・゜+. 
+しーＪ⠀⠀⠀⠀°。+</div>
 
-    <span class="。・°°・(＞_＜)・°°・。">這裡貼上妳的顏文字</span>
-
-    <div class="timer-container">
-        <div class="timer-title">HAPPY BIRTHDAY COUNTDOWN</div>
+    <div class="timer-box">
         <div id="timer" class="timer-display">00d 00h 00m 00s</div>
     </div>
 
-    <div class="bio-container">
+    <div class="bio-section">
         <div class="bio-text">
 自我介紹一下，日常是學測、追王牛新情報（要開演唱會了嗚呼！）、當阿夢、滑推特。
 
-推特都泡在日區趨勢跟很雜的FA和夢小說，喜歡貼連結來臉書做集中串。貼文幾乎是日常、碎碎念（看我最近迷什麼）、偶爾出去玩也可以隨便標我，我會很開心！
+推特都泡在日區趨勢跟很雜的FA和夢小說，喜歡貼連結來臉書做集中串。貼文幾乎是日常、碎碎念（看我最近迷什麼）、偶爾出去玩也可以隨便標我，我會很開心。
 
 大概就醬平常比較多轉發，愛去留言區玩。有版面潔癖，東西都有分相簿如果想要看ㄉ話私訊只收交易和委託相關ㄉ⋯⋯
         </div>
     </div>
 
-    <div class="footer-links">
-        <a href="這裡放妳的Litlink網址" class="btn litlink-btn" target="_blank">My Lit.link ❤️</a>
-        <a href="./birthday.html" class="btn">全螢幕倒數模式</a>
+    <div class="nav-links">
+        <a href="https://lit.link/zh-tw/superotakukaori" class="link-item">LIT.LINK</a>
+        <a href="./birthday.html" class="link-item">COUNTDOWN</a>
     </div>
 
     <script>
