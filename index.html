@@ -90,6 +90,46 @@
             opacity: 0.5;
             margin-top: 50px;
         }
+        /* 隱藏預設的三角形箭頭 */
+details summary {
+    list-style: none;
+    cursor: pointer;
+    font-size: 11px;
+    color: #999;
+    padding: 5px 0;
+    transition: 0.3s;
+}
+
+details summary::-webkit-details-marker {
+    display: none;
+}
+
+/* 滑鼠移上去的效果 */
+details summary:hover {
+    color: #b20000;
+}
+
+/* 展開後的內容樣式 */
+.dropdown-content {
+    font-size: 10.5px;
+    color: #bbb;
+    padding: 5px 0 15px 10px;
+    border-left: 1px solid #f0f0f0;
+    margin-left: 5px;
+    white-space: pre-wrap;
+    animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 展開時的標題顏色 */
+details[open] summary {
+    color: #b20000;
+    font-weight: bold;
+}
     </style>
 </head>
 <body>
@@ -132,16 +172,47 @@
 一年顱內之後開始委託電子檔至今，目前的目標是讓他還錢</div>
         </div>
 
-        <div class="bio-section">
-            <span class="section-title">COLLECTION & FANDOM</span>
-            <div class="bio-text">#刀劍亂舞：オカン組、三郎國宗入坑
-#JJ：立花希佐單推 (非代入派)。石田スイ老師狂粉。
-#FKMT：🀄️🎲 🦅🀄️ 赤木茂是神。
-#👑🐃：音飯，亞巡兩次參戰！
-
-遊玩歷集中：<a href="https://www.plurk.com/p/3i0u05i5vy" class="link-tag" target="_blank">PLURK LOG</a></div>
+       <div class="bio-section">
+    <span class="section-title">COLLECTION & FANDOM</span>
+    
+    <details class="dropdown">
+        <summary>#刀劍亂舞：オカン組、三郎國宗入坑</summary>
+        <div class="dropdown-content">
+            17年開始關注刀ステ&刀ミュ，25年因為三郎國宗正式入坑。
+            刀さに大粉絲，雜食且真的真的腐苦手。
+            有一個創作育兒本丸！じじい濃度很高（⋯）
         </div>
+    </details>
 
+    <details class="dropdown">
+        <summary>#JJ：立花希佐單推 (非代入派)</summary>
+        <div class="dropdown-content">
+            石田スイ老師狂粉。
+            自我認同是希佐決策意識的一個角色，很喜歡希佐，所以不是代入派。
+            衍伸漫畫和小說都有購入，jj2購入預訂中。
+        </div>
+    </details>
+
+    <details class="dropdown">
+        <summary>#FKMT：🀄️🎲 🦅🀄️ 赤木茂是神</summary>
+        <div class="dropdown-content">
+            看完的作品：賭博默示錄、破戒錄、墮天錄、鬥牌傳說、天。
+            🀄️全肯定，他是我很重要的人。
+        </div>
+    </details>
+
+    <details class="dropdown">
+        <summary>#👑🐃：音飯，亞巡兩次參戰！</summary>
+        <div class="dropdown-content">
+            全員激推。入坑曲：飛行艇。
+            兩次亞巡（包括 2024）皆有參戰！！
+        </div>
+    </details>
+
+    <div class="bio-text" style="margin-top: 15px;">
+        遊玩歷集中：<a href="https://www.plurk.com/p/3i0u05i5vy" class="link-tag" target="_blank">PLURK LOG</a>
+    </div>
+</div>
         <div class="bio-section">
             <span class="section-title">OTHERS</span>
             <div class="bio-text">多看青年漫和少年漫，日常或戀愛翻比較少接觸>< 最近想推ㄉ...
