@@ -137,7 +137,32 @@ details summary:hover {
 details[open] summary {
     color: #b20000;
     font-weight: bold;
+}.plurk-log-section {
+    max-width: 350px;
+    width: 100%;
+    margin-top: 40px;
+    border-top: 1px solid #f8f8f8;
+    padding-top: 30px;
 }
+
+.plurk-scroll-box {
+    width: 100%;
+    max-height: 450px; /* 限制高度，這樣才不會因為留言太長把網頁撐開 */
+    overflow-y: auto;  /* 留言變多時可以在內部捲動 */
+    border: 1px solid #f0f0f0;
+    border-radius: 6px;
+    background-color: #ffffff;
+}
+
+/* 讓內部捲動條變得很細很優雅 */
+.plurk-scroll-box::-webkit-scrollbar {
+    width: 4px;
+}
+.plurk-scroll-box::-webkit-scrollbar-thumb {
+    background: #f0f0f0;
+    border-radius: 10px;
+}
+        
     </style>
 </head>
 <body>
