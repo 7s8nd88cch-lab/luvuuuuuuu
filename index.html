@@ -14,8 +14,8 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 50px 25px;
-            line-height: 1.6;
+            padding: 80px 25px; /* 增加頂部間距，更有呼吸感 */
+            line-height: 1.8;
             min-height: 100vh;
         }
 
@@ -27,127 +27,125 @@
             line-height: 1.25;
             color: #b20000;
             margin-bottom: 30px;
-            display: block;
-            width: fit-content;
         }
 
         .cat-text {
-            font-family: sans-serif;
             font-size: 10px;
             color: #cccccc;
-            letter-spacing: 1px;
-            margin-bottom: 5px;
-            display: block;
-            text-align: center;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
         }
 
-        /* 倒數計時區 */
-        .timer-box {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .timer-display {
-            font-size: 1.1rem;
-            font-weight: 300;
-            color: #999999;
-            letter-spacing: 1.5px;
-        }
-
-        /* 即時限動區 */
-        .status-bar {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            margin-top: 12px;
-            font-size: 10px;
-            letter-spacing: 1px;
-            color: #b20000;
-            opacity: 0.8;
-            animation: fadeInStatus 2s ease-in;
-        }
-
-        .dot {
-            width: 6px;
-            height: 6px;
-            background-color: #b20000;
-            border-radius: 50%;
-            animation: blink 1.5s infinite;
-        }
-
+        /* 倒數計時 */
+        .timer-box { text-align: center; margin-bottom: 50px; }
+        .timer-display { font-size: 1.1rem; font-weight: 300; color: #999; letter-spacing: 1.5px; }
+        .status-bar { display: flex; align-items: center; justify-content: center; gap: 6px; margin-top: 15px; font-size: 10px; color: #b20000; }
+        .dot { width: 5px; height: 5px; background-color: #b20000; border-radius: 50%; animation: blink 1.5s infinite; }
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
-        @keyframes fadeInStatus { from { opacity: 0; transform: translateY(5px); } to { opacity: 0.8; transform: translateY(0); } }
 
-        /* 自我介紹區 - 上下都有灰線 */
-        .bio-section {
-            max-width: 320px;
+        /* 內容區塊佈局 */
+        .content-container {
+            max-width: 350px;
             width: 100%;
-            border-top: 1px solid #f5f5f5;
-            border-bottom: 1px solid #f5f5f5;
-            padding: 30px 0;
-            margin-bottom: 30px;
+        }
+
+        .bio-section {
+            border-top: 1px solid #f8f8f8;
+            padding: 40px 0;
+        }
+
+        .section-title {
+            font-size: 11px;
+            color: #b20000;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            display: block;
+            font-weight: bold;
         }
 
         .bio-text {
             font-size: 11px;
-            color: #999999;
+            color: #999;
             text-align: justify;
             white-space: pre-wrap;
-            opacity: 0.8;
         }
 
-       
-        /* 點點像素 GIF 樣式 */
+        /* 連結樣式 */
+        .link-tag {
+            color: #b20000;
+            text-decoration: none;
+            background: #fff5f5;
+            padding: 2px 5px;
+            border-radius: 3px;
+            transition: 0.3s;
+        }
+        .link-tag:hover { background: #b20000; color: #fff; }
+
+        /* 像素 GIF */
         .pixel-gif {
-            width: 50px; /* 妳可以根據 GIF 的大小調整寬度 */
+            width: 40px;
             height: auto;
-            margin-top: 30px;
-            image-rendering: pixelated; /* 讓像素圖保持清晰不模糊 */
-            opacity: 0.8;
+            image-rendering: pixelated;
+            opacity: 0.5;
+            margin-top: 50px;
         }
-
-        .link-item:hover { color: #b20000; }
     </style>
 </head>
 <body>
 
-    <div style="display: flex; flex-direction: column; align-items: center;">
-        
-        <div class="magic-cat">
+    <div class="magic-cat">
   ⠀⭒
- ⠀⠀/\ 
- ╭ /⠀\ ╮
+⠀⠀/\ 
+╭ /⠀\ ╮
 (ᥩ𓏼︲⩊︲)つ━☆・。 
 ⊂⠀⠀⠀ノ⠀⠀⠀・゜+. 
 しーＪ⠀⠀⠀⠀°。+</div>
 
-        <span class="cat-text" style="margin-top: -10px; margin-bottom: 5px;">birthday countdown</span>
-
-        <div class="timer-box">
-            <div id="timer" class="timer-display">00d 00h 00m 00s</div>
-            <div class="status-bar">
-                <span class="dot"></span> 
-                <span class="status-text">NOW IN | 刀劍亂舞沼</span>
-            </div>
+    <span class="cat-text">birthday countdown</span>
+    <div class="timer-box">
+        <div id="timer" class="timer-display">00d 00h 00m 00s</div>
+        <div class="status-bar">
+            <span class="dot"></span> 
+            <span class="status-text">CURRENT STATE | 刀劍亂舞沼</span>
         </div>
-        
     </div>
-    
 
+    <div class="content-container">
+        <div class="bio-section">
+            <span class="section-title">ABOUT ME</span>
+            <div class="bio-text">我是醺，自取也可以知道在叫我就好。
+日常是打單機遊戲、追王牛、當阿夢、滑推和pixiv。
+泡在日區趨勢跟很雜的FA和夢小說，喜歡貼連結到臉書做集中串。
+有版面潔癖，東西都有分相簿。私訊只收交易和委託。</div>
+        </div>
 
-    <div class="bio-section">
-        <div class="bio-text">我是醺，自取也可以知道在叫我就好！
-            
-日常是打單機遊戲、追王牛、當阿夢、滑推和pixiv（比耶）都泡在日區趨勢跟很雜的FA和夢小說，喜歡貼連結來臉書做集中串。
-貼文幾乎是日常、碎碎念（看我最近迷什麼）、偶爾出去玩。
+        <div class="bio-section">
+            <span class="section-title">DREAM LOG</span>
+            <div class="bio-text">黑尾鐵朗愛情向夢創作。
+相遇紀念 / 交往紀念。
+一年顱內之後開始委託電子檔至今。
+目前的目標是：讓他還錢。💸</div>
+        </div>
 
-大概就醬平常比較多轉發，愛去留言區打滾。也可以隨便標我，我會很開心！有版面潔癖，東西都有分相簿如果想要看ㄉ話
-            
-私訊只收交易和委託相關ㄉ安捏⋯⋯</div>
+        <div class="bio-section">
+            <span class="section-title">COLLECTION & FANDOM</span>
+            <div class="bio-text">#刀劍亂舞：オカン組、三郎國宗入坑。
+#JJ：立花希佐單推 (非代入派)。石田スイ老師狂粉。
+#FKMT：🀄️🎲 🦅🀄️ 赤木茂是神。
+#👑🐃：音飯，亞巡兩次參戰！
+
+遊玩歷集中：<a href="https://www.plurk.com/p/3i0u05i5vy" class="link-tag" target="_blank">PLURK LOG</a></div>
+        </div>
+
+        <div class="bio-section">
+            <span class="section-title">OTHERS</span>
+            <div class="bio-text">最近推坑：愚者之夜 / 神墮之境 / 烙印勇士 (1997)
+Listen: 青葉市子 / ROFーMAO / co1 🧫</div>
+        </div>
     </div>
+
     <img src="IMG_5045.gif" class="pixel-gif" alt="pixel decor">
-    </div>
 
     <script>
         const birthday = new Date("Nov 17, 2026 00:00:00").getTime();
