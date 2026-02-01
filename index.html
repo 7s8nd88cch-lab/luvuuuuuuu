@@ -137,32 +137,7 @@ details summary:hover {
 details[open] summary {
     color: #b20000;
     font-weight: bold;
-}.plurk-log-section {
-    max-width: 350px;
-    width: 100%;
-    margin-top: 40px;
-    border-top: 1px solid #f8f8f8;
-    padding-top: 30px;
 }
-
-.plurk-scroll-box {
-    width: 100%;
-    max-height: 450px; /* 限制高度，這樣才不會因為留言太長把網頁撐開 */
-    overflow-y: auto;  /* 留言變多時可以在內部捲動 */
-    border: 1px solid #f0f0f0;
-    border-radius: 6px;
-    background-color: #ffffff;
-}
-
-/* 讓內部捲動條變得很細很優雅 */
-.plurk-scroll-box::-webkit-scrollbar {
-    width: 4px;
-}
-.plurk-scroll-box::-webkit-scrollbar-thumb {
-    background: #f0f0f0;
-    border-radius: 10px;
-}
-        
     </style>
 </head>
 <body>
@@ -213,7 +188,7 @@ details[open] summary {
             17年開始關注刀ステ&刀ミュ，25年因為三郎國宗正式入坑(飲恨)
             刀さに大粉絲，雜食且真的真的腐苦手
             有一個創作育兒本丸！じじい濃度很高（⋯）
-         </div>
+        </div>
     </details>
 
     <details class="dropdown">
@@ -240,7 +215,11 @@ details[open] summary {
             全員激推。
             入坑曲是飛行艇，兩次亞巡（包括 2026）皆有參戰(預定)！！
         </div>
+    </details>
 
+    <div class="bio-text" style="margin-top: 15px;">
+        遊玩歷集中：<a href="https://www.plurk.com/p/3i0u05i5vy" class="link-tag" target="_blank">PLURK LOG</a>
+    </div>
 </div>
         <div class="bio-section">
             <span class="section-title">OTHERS</span>
@@ -266,11 +245,5 @@ details[open] summary {
         setInterval(updateTimer, 1000);
         updateTimer();
     </script>
-        <div class="plurk-scroll-box">
-    <blockquote class="plurk_embed" data-href="https://www.plurk.com/p/3i0u05i5vy">
-        <a href="https://www.plurk.com/p/3i0u05i5vy">Loading Plurk...</a>
-    </blockquote>
-    <script src="https://www.plurk.com/embed.js" charset="utf-8"></script>
-</div>
 </body>
 </html>
