@@ -111,15 +111,23 @@ details summary:hover {
 
 /* 展開後的內容樣式 */
 .dropdown-content {
+    position: relative; /* 為了定位小線條 */
+    padding-left: 15px; /* 留出空間給線 */
     font-size: 10.5px;
     color: #bbb;
-    padding: 5px 0 15px 10px;
-    border-left: 1px solid #f0f0f0;
-    margin-left: 5px;
-    white-space: pre-wrap;
-    animation: slideDown 0.3s ease-out;
+    margin-top: 5px;
 }
 
+.dropdown-content::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 5px; /* 讓線從文字中間高度開始 */
+    width: 1.5px; /* 線的粗細 */
+    height: 12px; /* 線的長度：固定在這裡！就不會太長了 */
+    background-color: #b20000; /* 黑尾紅 */
+    opacity: 0.5;
+}
 @keyframes slideDown {
     from { opacity: 0; transform: translateY(-5px); }
     to { opacity: 1; transform: translateY(0); }
