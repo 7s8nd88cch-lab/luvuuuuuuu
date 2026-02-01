@@ -82,14 +82,23 @@
         }
         .link-tag:hover { background: #b20000; color: #fff; }
 
-        /* 像素 GIF */
-        .pixel-gif {
-            width: 40px;
-            height: auto;
-            image-rendering: pixelated;
-            opacity: 0.5;
-            margin-top: 50px;
-        }
+     /* 像素 GIF */
+.pixel-gif {
+    width: 40px;
+    height: auto;
+    image-rendering: pixelated; /* 保持像素清晰 */
+    
+    /* 1. 恢復原色：把 opacity 改成 1 或直接刪除 */
+    opacity: 1; 
+
+    /* 2. 置中：需要搭配 display: block 加上左右 auto 外距 */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    
+    margin-top: 50px;
+}
+
         /* 隱藏預設的三角形箭頭 */
 details summary {
     list-style: none;
@@ -220,7 +229,7 @@ details[open] summary {
         <div class="bio-section">
             <span class="section-title">OTHERS</span>
             <div class="bio-text">多看青年漫和少年漫，日常或戀愛翻比較少接觸>< 最近想推ㄉ...
-                                  愚者之夜 / 神墮之境 / 烙印勇士 (1997)
+                                  →愚者之夜 / 神墮之境 / 烙印勇士 (1997)
         </div>
     </div>
             <div class="bio-text" style="margin-top: 15px;">
