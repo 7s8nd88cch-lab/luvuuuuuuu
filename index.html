@@ -1,177 +1,7 @@
-<!DOCTYPE html>
-<html lang="zh-TW">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>黒尾鉄朗.com</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body {
-            background-color: #ffffff;
-            color: #888888;
-            font-family: 'Helvetica Neue', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 80px 25px; /* 增加頂部間距，更有呼吸感 */
-            line-height: 1.8;
-            min-height: 100vh;
-        }
-
-        /* 魔法貓咪區域 */
-        .magic-cat {
-            font-family: 'Courier New', Courier, monospace;
-            white-space: pre;
-            font-size: 13px;
-            line-height: 1.25;
-            color: #b20000;
-            margin-bottom: 30px;
-        }
-
-        .cat-text {
-            font-size: 10px;
-            color: #cccccc;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-        }
-
-        /* 倒數計時 */
-        .timer-box { text-align: center; margin-bottom: 50px; }
-        .timer-display { font-size: 1.1rem; font-weight: 300; color: #999; letter-spacing: 1.5px; }
-        .status-bar { display: flex; align-items: center; justify-content: center; gap: 6px; margin-top: 15px; font-size: 10px; color: #b20000; }
-        .dot { width: 5px; height: 5px; background-color: #b20000; border-radius: 50%; animation: blink 1.5s infinite; }
-        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
-
-        /* 內容區塊佈局 */
-        .content-container {
-            max-width: 350px;
-            width: 100%;
-        }
-
-        .bio-section {
-            border-top: 1px solid #f8f8f8;
-            padding: 40px 0;
-        }
-
-        .section-title {
-            font-size: 11px;
-            color: #b20000;
-            letter-spacing: 1px;
-            margin-bottom: 15px;
-            display: block;
-            font-weight: bold;
-        }
-
-        .bio-text {
-            font-size: 11px;
-            color: #999;
-            text-align: justify;
-            white-space: pre-wrap;
-        }
-
-        /* 連結樣式 */
-        .link-tag {
-            color: #b20000;
-            text-decoration: none;
-            background: #fff5f5;
-            padding: 2px 5px;
-            border-radius: 3px;
-            transition: 0.3s;
-        }
-        .link-tag:hover { background: #b20000; color: #fff; }
-
-     /* 像素 GIF */
-.pixel-gif {
-    width: 40px;
-    height: auto;
-    image-rendering: pixelated; /* 保持像素清晰 */
-    
-    /* 1. 恢復原色：把 opacity 改成 1 或直接刪除 */
-    opacity: 1; 
-
-    /* 2. 置中：需要搭配 display: block 加上左右 auto 外距 */
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    
-    margin-top: 50px;
-}
-
-        /* 隱藏預設的三角形箭頭 */
-details summary {
-    list-style: none;
-    cursor: pointer;
-    font-size: 11px;
-    color: #999;
-    padding: 5px 0;
-    transition: 0.3s;
-}
-
-details summary::-webkit-details-marker {
-    display: none;
-}
-
-/* 滑鼠移上去的效果 */
-details summary:hover {
-    color: #b20000;
-}
-
-/* 展開後的內容樣式 */
-.dropdown-content {
-    position: relative; /* 為了定位小線條 */
-    padding-left: 15px; /* 留出空間給線 */
-    font-size: 10.5px;
-    color: #bbb;
-    margin-top: 5px;
-}
-
-.dropdown-content::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 5px; /* 讓線從文字中間高度開始 */
-    width: 1.5px; /* 線的粗細 */
-    height: 12px; /* 線的長度：固定在這裡！就不會太長了 */
-    background-color: #b20000; /* 黑尾紅 */
-    opacity: 0.5;
-}
-@keyframes slideDown {
-    from { opacity: 0; transform: translateY(-5px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* 展開時的標題顏色 */
-details[open] summary {
-    color: #b20000;
-    font-weight: bold;
-}
-    </style>
-</head>
-<body>
-
-    <div class="magic-cat">
-  ⠀⭒
-⠀⠀/\ 
-╭ /⠀\ ╮
-(ᥩ𓏼︲⩊︲)つ━☆・。 
-⊂⠀⠀⠀ノ⠀⠀⠀・゜+. 
-しーＪ⠀⠀⠀⠀°。+</div>
-
-    <span class="cat-text">birthday countdown</span>
-    <div class="timer-box">
-        <div id="timer" class="timer-display">00d 00h 00m 00s</div>
-        <div class="status-bar">
-            <span class="dot"></span> 
-            <span class="status-text">CURRENT STATE | 刀劍亂舞沼</span>
-        </div>
-    </div>
-
     <div class="content-container">
+        <div class="bio-section">
             <span class="section-title">ABOUT ME</span>
-            <div class="bio-section">
-        <div class="bio-text">我是醺，自取也可以知道在叫我就好！
+            <div class="bio-text">我是醺，自取也可以知道在叫我就好！
 
 日常是打單機遊戲、追王牛、當阿夢、滑推和pixiv（比耶）都泡在日區趨勢跟很雜的FA和夢小說，喜歡貼連結來臉書做集中串。
 貼文幾乎是日常、碎碎念（看我最近迷什麼）、偶爾出去玩。
@@ -188,71 +18,53 @@ details[open] summary {
 一年顱內之後開始委託電子檔至今，目前的目標是讓他還錢</div>
         </div>
 
-       <div class="bio-section">
-    <span class="section-title">COLLECTION & FANDOM</span>
-    
-    <details class="dropdown">
-        <summary>#刀劍亂舞：オカン組、三郎國宗入坑</summary>
-        <div class="dropdown-content">
-            17年開始關注刀ステ&刀ミュ，25年因為三郎國宗正式入坑(飲恨)
-            刀さに大粉絲，雜食且真的真的腐苦手
-            有一個創作育兒本丸！じじい濃度很高（⋯）
-        </div>
-    </details>
+        <div class="bio-section">
+            <span class="section-title">COLLECTION & FANDOM</span>
+            
+            <details class="dropdown">
+                <summary>#刀劍亂舞：オカン組、三郎國宗入坑</summary>
+                <div class="dropdown-content">
+                    17年開始關注刀ステ&刀ミュ，25年因為三郎國宗正式入坑(飲恨)
+                    刀さに大粉絲，雜食且真的真的腐苦手
+                    有一個創作育兒本丸！じじい濃度很高（⋯）
+                </div>
+            </details>
 
-    <details class="dropdown">
-        <summary>#JJ：立花希佐單推 (非代入派)</summary>
-        <div class="dropdown-content">
-            石田スイ老師大粉絲，自我認同是希佐決策意識的一個部分，
-            很喜歡希佐，所以不是代入派。
-            衍伸漫畫和小說都有購入，有jj2購入預定
-        </div>
-    </details>
+            <details class="dropdown">
+                <summary>#JJ：立花希佐單推 (非代入派)</summary>
+                <div class="dropdown-content">
+                    石田スイ老師大粉絲，自我認同是希佐決策意識的一個部分，
+                    很喜歡希佐，所以不是代入派。
+                    衍伸漫畫和小說都有購入，有jj2購入預定
+                </div>
+            </details>
 
-    <details class="dropdown">
-        <summary>#FKMT：吃🀄️🎲 🦅🀄️ 赤木茂是神</summary>
-        <div class="dropdown-content">
-            看完的作品：
-            賭博默示錄、破戒錄、墮天錄、鬥牌傳說、天_葬式篇
-        </div>
-    </details>
+            <details class="dropdown">
+                <summary>#FKMT：吃🀄️🎲 🦅🀄️ 赤木茂是神</summary>
+                <div class="dropdown-content">
+                    看完的作品：
+                    賭博默示錄、破戒錄、墮天錄、鬥牌傳說、天_葬式篇
+                </div>
+            </details>
 
-    <details class="dropdown">
-        <summary>#👑🐃：音飯，亞巡兩次參戰！</summary>
-        <div class="dropdown-content">
-            全員激推。
-            入坑曲是飛行艇，兩次亞巡（包括 2026）皆有參戰(預定)！！
+            <details class="dropdown">
+                <summary>#👑🐃：音飯，亞巡兩次參戰！</summary>
+                <div class="dropdown-content">
+                    全員激推。
+                    入坑曲是飛行艇，兩次亞巡（包括 2026）皆有參戰(預定)！！
+                </div>
+            </details>
         </div>
-    </details>
 
         <div class="bio-section">
             <span class="section-title">OTHERS</span>
             <div class="bio-text">多看青年漫和少年漫，日常或戀愛翻比較少接觸>< 最近想推ㄉ...
-                                  →愚者之夜 / 神墮之境 / 烙印勇士 (1997)
+→ 愚者之夜 / 神墮之境 / 烙印勇士 (1997)</div>
         </div>
-            
+
         <div class="bio-section">
-            <div class="bio-text" style="margin-top: 15px;">
-        刀&其他單機ㄉ遊玩歷集中：<a href="https://www.plurk.com/p/3h4bbtksvs" class="link-tag" target="_blank">PLURK LOG</a>
+            <div class="bio-text">
+                刀&其他單機ㄉ遊玩歷集中：<a href="https://www.plurk.com/p/3h4bbtksvs" class="link-tag" target="_blank">PLURK LOG</a>
+            </div>
+        </div>
     </div>
-
-
-    <img src="IMG_5045.gif" class="pixel-gif" alt="pixel decor">
-
-    <script>
-        const birthday = new Date("Nov 17, 2026 00:00:00").getTime();
-        function updateTimer() {
-            const now = new Date().getTime();
-            const distance = birthday - now;
-            const d = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const s = Math.floor((distance % (1000 * 60)) / 1000);
-            const format = (num) => num.toString().padStart(2, '0');
-            document.getElementById("timer").innerHTML = `${d}d ${format(h)}h ${format(m)}m ${format(s)}s`;
-        }
-        setInterval(updateTimer, 1000);
-        updateTimer();
-    </script>
-</body>
-</html>
