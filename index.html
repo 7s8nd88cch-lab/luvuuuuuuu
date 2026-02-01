@@ -1,9 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>黒尾鉄朗.com</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background-color: #ffffff;
+            color: #888888;
+            font-family: 'Helvetica Neue', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 80px 25px;
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+
+        /* 魔法貓咪區域 */
+        .magic-cat {
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre;
+            font-size: 13px;
+            line-height: 1.25;
+            color: #b20000;
+            margin-bottom: 30px;
+        }
+
+        .cat-text {
+            font-size: 10px;
+            color: #cccccc;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        /* 倒數計時 */
+        .timer-box { text-align: center; margin-bottom: 50px; }
+        .timer-display { font-size: 1.1rem; font-weight: 300; color: #999; letter-spacing: 1.5px; }
+        .status-bar { display: flex; align-items: center; justify-content: center; gap: 6px; margin-top: 15px; font-size: 10px; color: #b20000; }
+        .dot { width: 5px; height: 5px; background-color: #b20000; border-radius: 50%; animation: blink 1.5s infinite; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+        /* 內容區塊佈局 */
+        .content-container {
+            max-width: 350px;
+            width: 100%;
+        }
+
+        .bio-section {
+            border-top: 1px solid #f8f8f8;
+            padding: 40px 0;
+        }
+
+        .section-title {
+            font-size: 11px;
+            color: #b20000;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            display: block;
+            font-weight: bold;
+        }
+
+        .bio-text {
+            font-size: 11px;
+            color: #999;
+            text-align: justify;
+            white-space: pre-wrap;
+        }
+
+        /* 連結樣式 */
+        .link-tag {
+            color: #b20000;
+            text-decoration: none;
+            background: #fff5f5;
+            padding: 2px 5px;
+            border-radius: 3px;
+            transition: 0.3s;
+        }
+        .link-tag:hover { background: #b20000; color: #fff; }
+
+        /* 像素 GIF 置中原色 */
+        .pixel-gif {
+            width: 40px;
+            height: auto;
+            image-rendering: pixelated;
+            opacity: 1;
+            display: block;
+            margin: 50px auto 0 auto;
+        }
+
+        /* 摺疊面板樣式 */
+        details summary {
+            list-style: none;
+            cursor: pointer;
+            font-size: 11px;
+            color: #999;
+            padding: 5px 0;
+            transition: 0.3s;
+        }
+        details summary::-webkit-details-marker { display: none; }
+        details summary:hover { color: #b20000; }
+        
+        .dropdown-content {
+            position: relative;
+            padding-left: 15px;
+            font-size: 10.5px;
+            color: #bbb;
+            margin-top: 5px;
+            margin-bottom: 10px;
+        }
+        .dropdown-content::before {
+            content: "";
+            position: absolute;
+            left: 0; top: 5px;
+            width: 1.5px; height: 12px;
+            background-color: #b20000;
+            opacity: 0.5;
+        }
+        details[open] summary { color: #b20000; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div class="magic-cat">
+  ⠀⭒
+⠀⠀/\ 
+╭ /⠀\ ╮
+(ᥩ𓏼︲⩊︲)つ━☆・。 
+⊂⠀⠀⠀ノ⠀⠀⠀・゜+. 
+しーＪ⠀⠀⠀⠀°。+</div>
+
+    <span class="cat-text">birthday countdown</span>
+    <div class="timer-box">
+        <div id="timer" class="timer-display">00d 00h 00m 00s</div>
+        <div class="status-bar">
+            <span class="dot"></span> 
+            <span class="status-text">CURRENT STATE | 刀劍亂舞沼</span>
+        </div>
+    </div>
+
     <div class="content-container">
         <div class="bio-section">
             <span class="section-title">ABOUT ME</span>
             <div class="bio-text">我是醺，自取也可以知道在叫我就好！
 
-日常是打單機遊戲、追王牛、當阿夢、滑推和pixiv（比耶）都泡在日區趨勢跟很雜的FA和夢小說，喜歡貼連結來臉書做集中串。
+日常是打單機遊戲、追王牛、當阿夢、滑推和pixiv（比耶）都泡在日區趨勢跟很雜的FA and 夢小說，喜歡貼連結來臉書做集中串。
 貼文幾乎是日常、碎碎念（看我最近迷什麼）、偶爾出去玩。
 
 大概就醬平常比較多轉發，愛去留言區打滾。也可以隨便標我，我會很開心！有版面潔癖，東西都有分相簿如果想要看ㄉ話
@@ -68,3 +212,23 @@
             </div>
         </div>
     </div>
+
+    <img src="IMG_5045.gif" class="pixel-gif" alt="pixel decor">
+
+    <script>
+        const birthday = new Date("Nov 17, 2026 00:00:00").getTime();
+        function updateTimer() {
+            const now = new Date().getTime();
+            const distance = birthday - now;
+            const d = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((distance % (1000 * 60)) / 1000);
+            const format = (num) => num.toString().padStart(2, '0');
+            document.getElementById("timer").innerHTML = `${d}d ${format(h)}h ${format(m)}m ${format(s)}s`;
+        }
+        setInterval(updateTimer, 1000);
+        updateTimer();
+    </script>
+</body>
+</html>
