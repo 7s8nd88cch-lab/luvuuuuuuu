@@ -6,6 +6,21 @@
     <title>黒尾鉄朗.com</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        /* 醺式像素噪點背景 */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    /* 利用底色與微細顆粒產生的噪點感 */
+    background: url('https://www.transparenttextures.com/patterns/stardust.png'); 
+    opacity: 0.05; /* 非常淡，只有 5%，要在全白背景下才隱約看得到 */
+    pointer-events: none; /* 確保它不會擋住妳點擊連結 */
+    z-index: 9999;
+}
+
         
         body {
             background-color: #ffffff;
