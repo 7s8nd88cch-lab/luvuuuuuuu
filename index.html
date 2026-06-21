@@ -254,13 +254,94 @@
             min-height: 15px;
             letter-spacing: 1px;
         }
+
+        /* 〰️ 溫馨虛線樣式 */
+        .dashed-line {
+            width: 100%;
+            border-top: 1px dashed #eeeeee;
+            margin: 25px 0;
+        }
+
+        /* 🐈‍⬛ 電子寵物互動區樣式 */
+        .pet-container {
+            text-align: center;
+            margin-bottom: 35px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+        .pet-bubble {
+            background: #fafafa;
+            border: 1px solid #f0f0f0;
+            border-radius: 12px;
+            padding: 8px 12px;
+            font-size: 11px;
+            color: #888888;
+            margin-bottom: 10px;
+            max-width: 240px;
+            text-align: center;
+            display: inline-block;
+            position: relative;
+            line-height: 1.4;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        .pet-bubble.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        /* 對話框小箭頭 */
+        .pet-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%) rotate(45deg);
+            width: 8px;
+            height: 8px;
+            background: #fafafa;
+            border-right: 1px solid #f0f0f0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .pet-aa {
+            font-family: monospace;
+            font-size: 15px;
+            color: #b9b7b7;
+            cursor: pointer;
+            user-select: none;
+            transition: transform 0.2s ease;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        .pet-aa:active {
+            transform: scale(0.9);
+        }
+        /* 🐟 餵食按鈕 */
+        .feed-btn {
+            border: none;
+            background: #fafafa;
+            color: #ccc;
+            font-size: 10px;
+            padding: 6px 14px;
+            border-radius: 20px;
+            cursor: pointer;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .feed-btn:hover {
+            background: #f5f5f5;
+            color: #b9b7b7;
+        }
     </style>
 </head>
 <body>
 
-  
-
-   <!-- ========================================== -->
+    <!-- ========================================== -->
     <!-- 1. 公開主頁 (終極防歪、版權置底完美比例版) -->
     <!-- ========================================== -->
     <div id="public-view" class="content-container" style="max-width: 440px; background: none; box-shadow: none; padding: 0 15px; box-sizing: border-box;">
@@ -278,23 +359,48 @@
             </div>
         </div>
 
+  <!-- 〰️ 上方小虛線 -->
+        <div class="dashed-line"></div>
+
         <!-- 🌌 重磅大 GIF 擺放區 (妳的雙人夢圖) -->
-        <div style="width: 100%; display: flex; justify-content: center; margin-bottom: 25px;">
+        <div style="width: 100%; display: flex; justify-content: center;">
             <img src="IMG_6491.gif" style="max-width: 100%; height: auto; opacity: 0.9;" alt="dream art">
         </div>
 
-        <!-- 💬 下方坑名標籤區 -->
-        <div style="text-align: center; margin: 0 auto 40px auto; width: 100%; max-width: 360px;">
+        <!-- 💬 下方坑名標籤區（這裡原本上面的虛線已經被拿掉囉！） -->
+        <div style="text-align: center; margin: 40px auto 40px auto; width: 100%; max-width: 360px;">
             <div style="font-size: 11px; color: #b9b7b7; text-align: center; letter-spacing: 0.5px;">
                 819、刀剣乱舞、ツイステ、king gnu…etc.
             </div>
         </div>
 
         <!-- 🔒 好友限定傳送門 (帶有淡淡虛線) -->
-        <div style="text-align: center; border-top: 1px dashed #eeeeee; padding-top: 40px; margin-bottom: 30px;">
+        <div style="text-align: center; border-top: 1px dashed #eeeeee; padding-top: 40px; margin-bottom: 40px;">
             <button onclick="openPasswordModal()" class="link-tag" style="border: none; font-size: 10.5px; cursor: pointer; letter-spacing: 1px; padding: 6px 12px; display: inline-flex; align-items: center; justify-content: center; gap: 5px; line-height: 1; background: #fafafa; color: #ccc;">
                 [ ENTER FRIEND LOG 🔒 ]
             </button>
+        </div>
+
+<!-- 🐈‍⬛ 守護小精靈：會碎碎念與餵食的 AA 藝術小貓 -->
+        <div class="pet-container">
+            <!-- 貓咪台詞對話泡泡 -->
+            <div id="pet-bubble" class="pet-bubble">摸摸我，我就會說話唷！🐾</div>
+            
+            <!-- 🐱 經典炸毛 AA 藝術小貓 (點擊牠可以觸發隨機對話) -->
+            <pre id="pet-aa" class="pet-aa" onclick="petTheCat()">
+            ∧∧   
+     ～′￣￣(,,ﾟДﾟ)    
+     UU￣U U </pre>
+            
+            <!-- 餵食秋刀魚按鈕 -->
+            <button id="feed-btn" class="feed-btn" onclick="feedTheCat()">
+                [ 餵食一尾秋刀魚 🐟 ]
+            </button>
+            
+            <!-- 餵食數據統計欄 -->
+            <div id="feed-count-text" style="font-size: 10px; color: #d5d3d3; margin-top: 8px; letter-spacing: 0.5px;">
+                這個月已經有 0 個人類餵我吃秋刀魚了喵！
+            </div>
         </div>
 
         <!-- © 淡淡的版權署名文字 (絕對置底，最優雅壓軸) -->
@@ -304,17 +410,20 @@
 
     </div> <!-- public-view 結束 -->
 
+    <!-- ========================================== -->
+    <!-- 2. 好友限定頁面 (秘密基地) -->
+    <!-- ========================================== -->
     <div id="private-view" class="content-container" style="display: none; opacity: 0;">
         
-     <div style="display: flex; justify-content: center; width: 100%; margin-bottom: 20px;">
-    <pre style="font-family: monospace; font-size: 14px; line-height: 1.4; color: #b20000; margin: 0; text-align: left; background: transparent; border: none; padding: 0;">
-       ⠀⭒
-        /\ 
-     ╭ /⠀\ ╮
+        <div style="display: flex; justify-content: center; width: 100%; margin-bottom: 20px;">
+            <pre style="font-family: monospace; font-size: 14px; line-height: 1.4; color: #b20000; margin: 0; text-align: left; background: transparent; border: none; padding: 0;">
+        ⠀⭒
+         /\ 
+      ╭ /⠀\ ╮
     (ᥩ𓏼︲⩊︲)つ━☆・。 
     ⊂⠀⠀⠀ノ⠀⠀⠀・゜+. 
     しーＪ⠀⠀⠀⠀°。+</pre>
-</div>
+        </div>
 
         <div style="text-align: center; margin-bottom: 30px;">
             <span class="cat-text" style="display: block; text-align: center;">birthday countdown</span>
@@ -444,9 +553,11 @@
     <!-- 最後的絕對留白與像素裝飾 -->
     <img src="IMG_5045.gif" class="pixel-gif" style="margin-top: 100px;" alt="pixel decor">
 
-    <!-- JavaScript 邏輯控制 -->
+    <!-- ========================================== -->
+    <!-- ⚙️ JavaScript 邏輯控制 -->
+    <!-- ========================================== -->
     <script>
-        // 設定妳的好友限定密碼！(目前預設為 1117，妳可以改成任何想要的密碼)
+        // 設定妳的好友限定密碼！
         const CORRECT_PASSWORD = "9696"; 
 
         // 倒數計時邏輯
@@ -526,6 +637,125 @@
                 }, 50);
             }, 500);
         }
+
+        // ==========================================
+        // 🐈‍⬛ 守護小精靈：觸摸碎碎念機制
+        // ==========================================
+        const PET_TALKS = [
+            "摸摸頭的話，就給你一個小小的幸運御守 🐾",
+            "不要一直戳我啦喵！再戳我要去咬阿鐵的排球了喔！",
+            "主人今天好像又在沉迷於美色（指刀劍男士）了喵 🌸",
+            "想進秘密基地嗎？才沒有提示!呸呸",
+            "答對密碼的話，裡面還有一隻會施魔法的黑貓在等著你唷！",
+            "喵？今天也有乖乖吃飽睡飽嗎？",
+            "（嚼嚼嚼）⋯⋯秋刀魚是世界上最棒的發明！🐟",
+            "主人今天好像又在聽 King Gnu ♫ 搖擺搖擺～",
+            "( =𓏼⩊𓏼= ) 看在你這麼有誠意戳我的份上，給你施加不失眠魔法！"
+        ];
+
+        let bubbleTimeout;
+
+        function petTheCat() {
+            const bubble = document.getElementById('pet-bubble');
+            
+            // 隨機撈一句話
+            const randomQuote = PET_TALKS[Math.floor(Math.random() * PET_TALKS.length)];
+            
+            bubble.innerHTML = randomQuote;
+            bubble.classList.add('show');
+            
+            // 點擊貓咪的彈跳小動畫
+            const cat = document.getElementById('pet-aa');
+            cat.style.transform = 'scale(1.2)';
+            setTimeout(() => { cat.style.transform = 'scale(1)'; }, 150);
+
+            // 5秒後台詞泡泡淡出
+            clearTimeout(bubbleTimeout);
+            bubbleTimeout = setTimeout(() => {
+                bubble.classList.remove('show');
+            }, 5000);
+        }
+
+        // ==========================================
+        // 🐟 守護小精靈：月限一次 Local Storage 餵食統計
+        // ==========================================
+        // 生成模擬基底人數：利用當月份作為種子，讓數字在不同月份有合理的、緩慢增長的基數
+        function getBaseFeedCount() {
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = now.getMonth(); // 0 - 11
+            
+            // 隨機生成一個合理的人數基底
+            const base = 5 + ((year * 13 + month * 7) % 41);
+            return base;
+        }
+
+        function getFeedStorageKey() {
+            const now = new Date();
+            return `fed-${now.getFullYear()}-${(now.getMonth() + 1).toString().padStart(2, '0')}`;
+        }
+
+        // 初始化餵食畫面
+        function initFeedSystem() {
+            const storageKey = getFeedStorageKey();
+            const baseCount = getBaseFeedCount();
+            
+            // 從 LocalStorage 拿取使用者點擊歷史
+            let localClicks = parseInt(localStorage.getItem(storageKey + '-count') || '0');
+            
+            // 總人數 = 基礎模擬人數 + 這台手機點擊的次數
+            const totalFeeds = baseCount + localClicks;
+            
+            // 更新畫面上的人數
+            document.getElementById('feed-count-text').innerText = `這個月已經有 ${totalFeeds} 個人類餵我吃秋刀魚了喵！`;
+            
+            // 如果這個月已經餵過了，按鈕文字切換
+            if (localStorage.getItem(storageKey) === 'true') {
+                document.getElementById('feed-btn').innerText = '[ 謝謝人類！(𓏼⩊𓏼) ]';
+            }
+        }
+
+        function feedTheCat() {
+            const storageKey = getFeedStorageKey();
+            const bubble = document.getElementById('pet-bubble');
+            const btn = document.getElementById('feed-btn');
+            
+            // 檢查本月是否已經餵食過
+            if (localStorage.getItem(storageKey) === 'true') {
+                // 已餵食過 ➔ 貓咪吐槽
+                bubble.innerHTML = "你這個月已經餵過我秋刀魚了，再吃肚子要爆掉啦喵！( =•𖥦•= )🐾";
+                bubble.classList.add('show');
+                
+                // 3秒後台詞淡出
+                clearTimeout(bubbleTimeout);
+                bubbleTimeout = setTimeout(() => {
+                    bubble.classList.remove('show');
+                }, 3000);
+                return;
+            }
+
+            // 未餵食 ➔ 執行餵食！
+            localStorage.setItem(storageKey, 'true');
+            
+            let localClicks = parseInt(localStorage.getItem(storageKey + '-count') || '0');
+            localClicks += 1;
+            localStorage.setItem(storageKey + '-count', localClicks.toString());
+            
+            bubble.innerHTML = "（嚼嚼嚼）⋯⋯秋刀魚大餐！謝謝善心的人類！喵！━☆・。";
+            bubble.classList.add('show');
+            btn.innerText = '[ 謝謝人類！(𓏼⩊𓏼) ]';
+            
+            initFeedSystem();
+
+            // 5秒後台詞淡出
+            clearTimeout(bubbleTimeout);
+            bubbleTimeout = setTimeout(() => {
+                bubble.classList.remove('show');
+            }, 5000);
+        }
+
+        // 初始化
+        initFeedSystem();
     </script>
 </body>
 </html>
