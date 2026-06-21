@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
@@ -5,7 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>黒尾鉄朗.com</title>
     <style>
+        /* CSS 歸零與基礎設定 */
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
 
+        /* 醺式像素噪點背景 */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: url('https://www.transparenttextures.com/patterns/stardust.png'); 
+            opacity: 0.1; 
+            pointer-events: none; 
+            z-index: 9999;
+        }
         
         body {
             background-color: #ffffff;
@@ -38,16 +58,42 @@
         }
 
         /* 倒數計時 */
-        .timer-box { text-align: center; margin-bottom: 50px; }
-        .timer-display { font-size: 1.1rem; font-weight: 300; color: #999; letter-spacing: 1.5px; }
-        .status-bar { display: flex; align-items: center; justify-content: center; gap: 6px; margin-top: 15px; font-size: 10px; color: #b20000; }
-        .dot { width: 5px; height: 5px; background-color: #b20000; border-radius: 50%; animation: blink 1.5s infinite; }
-        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+        .timer-box { 
+            text-align: center; 
+            margin-bottom: 50px; 
+        }
+        .timer-display { 
+            font-size: 1.1rem; 
+            font-weight: 300; 
+            color: #999; 
+            letter-spacing: 1.5px; 
+        }
+        .status-bar { 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            gap: 6px; 
+            margin-top: 15px; 
+            font-size: 10px; 
+            color: #b20000; 
+        }
+        .dot { 
+            width: 5px; 
+            height: 5px; 
+            background-color: #b20000; 
+            border-radius: 50%; 
+            animation: blink 1.5s infinite; 
+        }
+        @keyframes blink { 
+            0%, 100% { opacity: 1; } 
+            50% { opacity: 0.3; } 
+        }
 
-        /* 內容區塊佈局 */
+        /* 內容區塊主佈局 */
         .content-container {
             max-width: 350px;
             width: 100%;
+            transition: opacity 0.5s ease; /* 漸變淡入淡出 */
         }
 
         .bio-section {
@@ -80,9 +126,12 @@
             border-radius: 3px;
             transition: 0.3s;
         }
-        .link-tag:hover { background: #b20000; color: #fff; }
+        .link-tag:hover { 
+            background: #b20000; 
+            color: #fff; 
+        }
 
-        /* 像素 GIF 置中原色 */
+        /* 像素 GIF */
         .pixel-gif {
             width: 40px;
             height: auto;
@@ -101,8 +150,12 @@
             padding: 5px 0;
             transition: 0.3s;
         }
-        details summary::-webkit-details-marker { display: none; }
-        details summary:hover { color: #b20000; }
+        details summary::-webkit-details-marker { 
+            display: none; 
+        }
+        details summary:hover { 
+            color: #b20000; 
+        }
         
         .dropdown-content {
             position: relative;
@@ -115,34 +168,152 @@
         .dropdown-content::before {
             content: "";
             position: absolute;
-            left: 0; top: 5px;
-            width: 1.5px; height: 12px;
+            left: 0; 
+            top: 5px;
+            width: 1.5px; 
+            height: 12px;
             background-color: #b20000;
             opacity: 0.5;
         }
-        details[open] summary { color: #b20000; font-weight: bold; }
+        details[open] summary { 
+            color: #b20000; 
+            font-weight: bold; 
+        }
+
+        /* 🔐 密碼彈窗玄學樣式 */
+        .password-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background: rgba(255, 255, 255, 0.98); /* 極度純淨的白背景遮罩 */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+        .password-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .password-box {
+            text-align: center;
+            max-width: 280px;
+            width: 100%;
+        }
+        .password-title {
+            font-size: 11px;
+            color: #b20000;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        .password-input {
+            width: 100%;
+            border: none;
+            border-bottom: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+            outline: none;
+            letter-spacing: 4px;
+            margin-bottom: 15px;
+            background: transparent;
+        }
+        .password-input::placeholder {
+            letter-spacing: 1px;
+            color: #ccc;
+        }
+        .password-btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        .pw-btn {
+            font-size: 10px;
+            color: #999;
+            cursor: pointer;
+            letter-spacing: 1px;
+            border: none;
+            background: none;
+            outline: none;
+            padding: 5px 10px;
+            transition: 0.3s;
+        }
+        .pw-btn:hover {
+            color: #b20000;
+        }
+        .error-message {
+            color: #b20000;
+            font-size: 9px;
+            margin-top: 10px;
+            min-height: 15px;
+            letter-spacing: 1px;
+        }
     </style>
 </head>
 <body>
 
-    <div class="magic-cat">
-  ⠀⭒
-⠀⠀/\ 
-╭ /⠀\ ╮
-(ᥩ𓏼︲⩊︲)つ━☆・。 
-⊂⠀⠀⠀ノ⠀⠀⠀・゜+. 
-しーＪ⠀⠀⠀⠀°。+</div>
-
-    <span class="cat-text">birthday countdown</span>
-    <div class="timer-box">
-        <div id="timer" class="timer-display">00d 00h 00m 00s</div>
-        <div class="status-bar">
-            <span class="dot"></span> 
-            <span class="status-text">CURRENT STATE | 低浮上（当社比）</span>
+  
+    <!-- ========================================== -->
+    <!-- 1. 公開主頁 (只放最簡單的介紹) -->
+    <!-- ========================================== -->
+<div id="public-view" class="content-container" style="max-width: 440px;">
+        
+        <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 25px; margin-top: 20px;">
+            <div style="width: 88px; height: 88px; border-radius: 50%; overflow: hidden; border: 2px solid #f8f8f8; box-shadow: 0 2px 8px rgba(0,0,0,0.02);">
+                <img src="IMG_4122.PNG" style="width: 100%; height: 100%; object-fit: cover;" alt="profile">
+            </div>
+            <div style="font-size: 14px; color: #b9b7b7; margin-top: 12px; font-family: 'Kosugi', sans-serif;">ꕤ</div>
         </div>
+
+        <div class="bio-section" style="border: none; text-align: center; padding: 10px 0 35px 0;">
+            <div class="bio-text" style="font-size: 11px; color: #b9b7b7; text-align: center; letter-spacing: 0.5px;">
+                819、刀剣乱舞、ツイステ、king gnu…etc.
+            </div>
+        </div>
+
+        <div style="width: 100%; display: flex; justify-content: center; margin-bottom: 40px;">
+            <img src="IMG_6491.gif" style="max-width: 100%; height: auto; opacity: 0.9;" alt="island decor">
+        </div>
+
+        <div style="text-align: center; font-size: 10.5px; color: #b9b7b7; margin-bottom: 40px; letter-spacing: 0.5px;">
+            © 沛／kui
+        </div>
+
+        <div style="text-align: center; border-top: 1px dashed #eeeeee; padding-top: 40px;">
+            <button onclick="openPasswordModal()" class="link-tag" style="border: none; font-size: 10.5px; cursor: pointer; letter-spacing: 1px; padding: 6px 12px; display: inline-flex; align-items: center; justify-content: center; gap: 5px; line-height: 1; background: #fafafa; color: #ccc;">
+                [ ENTER FRIEND LOG 🔐 ]
+            </button>
+        </div>
+
     </div>
 
-    <div class="content-container">
+    <div id="private-view" class="content-container" style="display: none; opacity: 0;">
+        
+     <div style="display: flex; justify-content: center; width: 100%; margin-bottom: 20px;">
+    <pre style="font-family: monospace; font-size: 14px; line-height: 1.4; color: #b9b7b7; margin: 0; text-align: left; background: transparent; border: none; padding: 0;">
+       ⠀⭒
+        /\ 
+     ╭ /⠀\ ╮
+    (ᥩ𓏼︲⩊︲)つ━☆・。 
+    ⊂⠀⠀⠀ノ⠀⠀⠀・゜+. 
+    しーＪ⠀⠀⠀⠀°。+</pre>
+</div>
+
+        <div style="text-align: center; margin-bottom: 30px;">
+            <span class="cat-text" style="display: block; text-align: center;">birthday countdown</span>
+            <div id="timer" class="timer-display" style="text-align: center;">00d 00h 00m 00s</div>
+            <div class="status-bar">
+                <span class="dot"></span> 
+                <span class="status-text">CURRENT STATE | 低浮上（当社比）</span>
+            </div>
+        </div>
+
         <div class="bio-section">
             <span class="section-title">ABOUT ME</span>
             <div class="bio-text">我是醺，自取也可以知道在叫我就好！
@@ -155,6 +326,7 @@
 私訊只收交易和委託相關ㄉ安捏⋯⋯</div>
         </div>
 
+        <!-- YUME LOG -->
         <div class="bio-section">
             <span class="section-title">YUME LOG</span>
             <div class="bio-text">黑尾鐵朗愛情向夢創作
@@ -162,13 +334,14 @@
 一年顱內之後開始委託電子檔至今，目前的目標是讓他還錢</div>
         </div>
 
+        <!-- COLLECTION & FANDOM -->
         <div class="bio-section">
             <span class="section-title">COLLECTION & FANDOM</span>
             
             <details class="dropdown">
                 <summary>#とうらぶ：主本家 2.5有在慢慢看</summary>
                 <div class="dropdown-content">
-                    現在的近侍是燭台切光忠
+                    現在的近侍是燭台切光忠<br>
                     刀さに大粉絲，雜食且真的真的腐苦手
                 </div>
             </details>
@@ -176,8 +349,8 @@
             <details class="dropdown">
                 <summary>#ジャックジャンヌ：立花希佐單推 (非代入派)</summary>
                 <div class="dropdown-content">
-                    石田スイ老師大粉絲，自我認同是希佐決策意識的一個部分，
-                    很喜歡希佐，所以不是代入派。
+                    石田スイ老師大粉絲，自我認同是希佐決策意識的一個部分，<br>
+                    很喜歡希佐，所以不是代入派。<br>
                     衍伸漫畫和小說都有購入，有jj2購入預定
                 </div>
             </details>
@@ -185,7 +358,7 @@
             <details class="dropdown">
                 <summary>#FKMT：吃🀄️🎲、 🦅🀄️ 赤木茂是神</summary>
                 <div class="dropdown-content">
-                    看完的作品：
+                    看完的作品：<br>
                     賭博默示錄、破戒錄、墮天錄、鬥牌傳說、天_葬式篇
                 </div>
             </details>
@@ -193,32 +366,34 @@
             <details class="dropdown">
                 <summary>#👑🐃：音飯，亞巡兩次參戰！</summary>
                 <div class="dropdown-content">
-                    全員激推。
-                    入坑曲是飛行艇，兩次亞巡（包括 2026）皆有參戰(預定)！！
+                    全員激推。<br>
+                    入坑曲是飛行艇，兩次亞巡（包括 2026）皆有參戰！！
                 </div>
             </details>
-              <details class="dropdown">
+
+            <details class="dropdown">
                 <summary>#ツイステ：推🍩，🐬顏粉</summary>
                 <div class="dropdown-content">
-                    新米監督生，吃all監 
+                    新米監督生，吃all監<br>
                     x腐苦手，同擔大歡迎❗❗
                 </div>
             </details>
         </div>
 
+        <!-- OTHERS -->
         <div class="bio-section">
             <span class="section-title">OTHERS</span>
-            <div class="bio-text">多看青年漫和少年漫，日常或戀愛番比較少接觸><
-            </div>
+            <div class="bio-text">多看青年漫 and 少年漫，日常或戀愛番比較少接觸><</div>
         </div>
 
-                              <div class="bio-section" style="border-bottom: 1px solid #f8f8f8;">
+        <!-- GAMEPLAY LOG -->
+        <div class="bio-section" style="border-bottom: 1px solid #f8f8f8;">
             <div style="display: flex; align-items: baseline; gap: 8px;">
                 <span class="section-title" style="margin-bottom: 0;">GAMEPLAY LOG</span>
                 
                 <details style="cursor: pointer; position: relative;">
                     <summary style="list-style: none; color: #ddd; font-size: 10px; letter-spacing: 1px; outline: none;">
-                    （click to peek...）
+                        （click to peek...）
                     </summary>
                     
                     <div style="position: absolute; left: 0; top: 20px; color: #bbb; font-size: 10.5px; line-height: 1.5; width: 250px; background: rgba(255,255,255,0.95); z-index: 10; padding: 5px 0;">
@@ -234,13 +409,36 @@
             </div>
         </div>
 
+        <div style="text-align: center; margin-top: 35px;">
+            <span onclick="lockPage()" style="font-size: 9.5px; color: #ccc; cursor: pointer; letter-spacing: 1px;">[ LOCK DIARY 🔒 ]</span>
+        </div>
 
+    </div> <!-- private-view 結束 -->
 
- <img src="IMG_5045.gif" class="pixel-gif" style="margin-top: 100px;" alt="pixel decor">
+    <!-- ========================================== -->
+    <!-- 3. 🔐 密碼輸入彈窗 -->
+    <!-- ========================================== -->
+    <div id="password-modal" class="password-overlay">
+        <div class="password-box">
+            <div class="password-title">FRIEND KEY REQUIRED</div>
+            <input type="password" id="pw-input" class="password-input" placeholder="密碼在友限ㄉ置頂" onkeydown="handleEnter(event)">
+            <div class="password-btn-group">
+                <button class="pw-btn" onclick="closePasswordModal()">[ CANCEL ]</button>
+                <button class="pw-btn" onclick="checkPassword()" style="color: #b20000; font-weight: bold;">[ UNLOCK ]</button>
+            </div>
+            <div id="pw-error" class="error-message"></div>
+        </div>
+    </div>
 
+    <!-- 最後的絕對留白與像素裝飾 -->
+    <img src="IMG_5045.gif" class="pixel-gif" style="margin-top: 100px;" alt="pixel decor">
 
-
+    <!-- JavaScript 邏輯控制 -->
     <script>
+        // 設定妳的好友限定密碼！(目前預設為 1117，妳可以改成任何想要的密碼)
+        const CORRECT_PASSWORD = "1117"; 
+
+        // 倒數計時邏輯
         const birthday = new Date("Nov 17, 2026 00:00:00").getTime();
         function updateTimer() {
             const now = new Date().getTime();
@@ -254,6 +452,69 @@
         }
         setInterval(updateTimer, 1000);
         updateTimer();
+
+        // 密碼彈窗控制
+        function openPasswordModal() {
+            document.getElementById("pw-error").innerText = "";
+            document.getElementById("pw-input").value = "";
+            document.getElementById("password-modal").classList.add("active");
+            document.getElementById("pw-input").focus();
+        }
+
+        function closePasswordModal() {
+            document.getElementById("password-modal").classList.remove("active");
+        }
+
+        function handleEnter(event) {
+            if (event.key === "Enter") {
+                checkPassword();
+            }
+        }
+
+        // 密碼驗證與轉場魔法 (絕對不 Shame 的 Flex 轉場)
+        function checkPassword() {
+            const enteredPw = document.getElementById("pw-input").value;
+            const errorDiv = document.getElementById("pw-error");
+            
+            if (enteredPw === CORRECT_PASSWORD) {
+                // 關閉彈窗
+                closePasswordModal();
+                
+                // 公開主頁淡出
+                const publicView = document.getElementById("public-view");
+                publicView.style.opacity = "0";
+                
+                setTimeout(() => {
+                    publicView.style.display = "none";
+                    
+                    // 好友限定頁淡入
+                    const privateView = document.getElementById("private-view");
+                    privateView.style.display = "block";
+                    setTimeout(() => {
+                        privateView.style.opacity = "1";
+                    }, 50);
+                }, 500);
+            } else {
+                errorDiv.innerText = "ACCESS DENIED. ( 嗚 )";
+                document.getElementById("pw-input").value = "";
+                document.getElementById("pw-input").focus();
+            }
+        }
+
+        // 重新上鎖
+        function lockPage() {
+            const privateView = document.getElementById("private-view");
+            privateView.style.opacity = "0";
+            
+            setTimeout(() => {
+                privateView.style.display = "none";
+                const publicView = document.getElementById("public-view");
+                publicView.style.display = "block";
+                setTimeout(() => {
+                    publicView.style.opacity = "1";
+                }, 50);
+            }, 500);
+        }
     </script>
 </body>
 </html>
