@@ -260,40 +260,54 @@
 
   
 
+   <!-- ========================================== -->
+    <!-- 1. 公開主頁 (終極防歪、版權置底完美比例版) -->
     <!-- ========================================== -->
-    <!-- 1. 公開主頁 (極簡純淨：WELCOME 字樣 + 大GIF) -->
-    <!-- ========================================== -->
-    <div id="public-view" class="content-container" style="max-width: 440px; background: none; box-shadow: none;">
+    <div id="public-view" class="content-container" style="max-width: 440px; background: none; box-shadow: none; padding: 0 15px; box-sizing: border-box;">
         
-        <!-- ✨ 仿照 YUME LOG 質感的 WELCOME 字樣區塊 -->
-        <div style="text-align: center; margin-top: 50px; margin-bottom: 5px;">
+        <!-- ✨ WELCOME 字樣 -->
+        <div style="text-align: center; margin-top: 50px; margin-bottom: 20px;">
             <span class="section-title" style="letter-spacing: 2px; font-size: 14px;">WELCOME</span>
         </div>
 
-  <!-- 💬 置中的碎碎念介紹區 (加上防歪大絕招) -->
-        <div class="bio-section" style="border: none; text-align: center; padding: 10px 0 35px 0 !important; background: transparent; width: 100%;">
-            <div class="bio-text" style="font-size: 11px; color: #b9b7b7; text-align: center; letter-spacing: 0.5px; width: 100%; padding: 0 !important; margin: 0 auto;">
-               醺、卡歐哩 自取ᵒᵏ
-隨意窩日誌&夢存放，沒什麼雷點希望大家用自己舒服的距離相處就好 ;)
+        <!-- 💬 上方新介紹區 (完全防歪自適應) -->
+        <div style="text-align: center; margin: 0 auto 35px auto; width: 100%; max-width: 360px;">
+            <div style="font-size: 11px; color: #b9b7b7; text-align: center; letter-spacing: 0.5px; line-height: 1.8;">
+                醺、卡歐哩 自取ᵒᵏ<br>
+                隨意窩日誌&夢存放，沒什麼雷點希望大家用自己舒服的距離相處就好 ;)
             </div>
         </div>
 
-        <!-- 🌌 重磅大 GIF 擺放區 (妳的雪景島嶼大圖) -->
-        <div style="width: 100%; display: flex; justify-content: center; margin-bottom: 40px;">
-            <img src="IMG_6491.gif" style="max-width: 100%; height: auto; opacity: 0.9;" alt="island decor">
+        <!-- 🌌 重磅大 GIF 擺放區 (妳的雙人夢圖) -->
+        <div style="width: 100%; display: flex; justify-content: center; margin-bottom: 25px;">
+            <img src="IMG_6491.gif" style="max-width: 100%; height: auto; opacity: 0.9;" alt="dream art">
         </div>
 
-        <!-- 淡淡的版權/署名文字 -->
-        <div style="text-align: center; font-size: 10.5px; color: #b9b7b7; margin-bottom: 40px; letter-spacing: 0.5px;">
-            819、刀剣乱舞、ツイステ、king gnu…etc.
+        <!-- 💬 下方坑名標籤區 -->
+        <div style="text-align: center; margin: 0 auto 40px auto; width: 100%; max-width: 360px;">
+            <div style="font-size: 11px; color: #b9b7b7; text-align: center; letter-spacing: 0.5px;">
+                819、刀剣乱舞、ツイステ、king gnu…etc.
+            </div>
         </div>
 
-        <!-- 🔒 好友限定傳送門 -->
-        <div style="text-align: center; border-top: 1px dashed #eeeeee; padding-top: 40px;">
+        <!-- 🔒 好友限定傳送門 (帶有淡淡虛線) -->
+        <div style="text-align: center; border-top: 1px dashed #eeeeee; padding-top: 40px; margin-bottom: 30px;">
             <button onclick="openPasswordModal()" class="link-tag" style="border: none; font-size: 10.5px; cursor: pointer; letter-spacing: 1px; padding: 6px 12px; display: inline-flex; align-items: center; justify-content: center; gap: 5px; line-height: 1; background: #fafafa; color: #ccc;">
                 [ ENTER FRIEND LOG 🔒 ]
-        </div>
             </button>
+        </div>
+
+        <!-- ❄️ 雪景小島裝飾 (放在這裡當作結尾的過渡) -->
+        <!-- 💡 如果妳下面原本有放小島的 img 標籤，可以維持原本的，或者用下面這一行 -->
+        <div style="text-align: center; margin-bottom: 20px;">
+            <img src="IMG_5045.gif" style="width: 32px; height: auto; opacity: 0.8;" alt="deco">
+        </div>
+
+        <!-- © 淡淡的版權署名文字 (絕對置底，最優雅壓軸) -->
+        <div style="text-align: center; font-size: 10px; color: #d5d3d3; margin-bottom: 30px; letter-spacing: 0.5px;">
+            © 사부／kui
+        </div>
+
     </div> <!-- public-view 結束 -->
 
     <div id="private-view" class="content-container" style="display: none; opacity: 0;">
