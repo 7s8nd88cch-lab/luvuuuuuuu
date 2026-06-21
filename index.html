@@ -683,15 +683,15 @@
         // 🐟 守護小精靈：月限一次 Local Storage 餵食統計
         // ==========================================
         // 生成模擬基底人數：利用當月份作為種子，讓數字在不同月份有合理的、微幅的基數
-        function getBaseFeedCount() {
-            const now = new Date();
-            const year = now.getFullYear();
-            const month = now.getMonth(); // 0 - 11
-            
-            // 砍掉碰風！基底人數縮減到只有 1~5 人左右，超級低調
-            const base = 1 + ((year * 3 + month * 2) % 5);
-            return base;
-        }
+function getBaseFeedCount() {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = now.getMonth(); // 0 - 11
+
+    // 調整為 5 ~ 12 人（保證在 15 人以內，既溫馨熱鬧，又不會覺得浮誇害羞喵！）
+    const base = 5 + ((year * 3 + month * 2) % 8);
+    return base;
+}
 
         function getFeedStorageKey() {
             const now = new Date();
