@@ -686,7 +686,7 @@
             const month = now.getMonth(); // 0 - 11
             
             // 隨機生成一個合理的人數基底
-            const base = 5 + ((year * 13 + month * 7) % 41);
+            const base = 1+ ((year * 13 + month * 7) % 41);
             return base;
         }
 
@@ -723,7 +723,7 @@
             // 檢查本月是否已經餵食過
             if (localStorage.getItem(storageKey) === 'true') {
                 // 已餵食過 ➔ 貓咪吐槽
-                bubble.innerHTML = "你這個月已經餵過我秋刀魚了，再吃肚子要爆掉啦喵！( =•𖥦•= )🐾";
+                bubble.innerHTML = "你這個月已經餵過我秋刀魚了，再吃肚子要爆掉啦喵！🐾";
                 bubble.classList.add('show');
                 
                 // 3秒後台詞淡出
