@@ -1,0 +1,336 @@
+
+        /* CSS 歸零與基礎設定 */
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+
+        
+        body {
+            background-color: #ffffff;
+            color: #888888;
+            font-family: 'Helvetica Neue', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 80px 25px;
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+
+        /* 魔法貓咪區域 */
+        .magic-cat {
+            font-family: 'Courier New', Courier, monospace;
+            white-space: pre;
+            font-size: 13px;
+            line-height: 1.25;
+            color: #b20000;
+            margin-bottom: 30px;
+        }
+
+        .cat-text {
+            font-size: 10px;
+            color: #cccccc;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        /* 倒數計時 */
+        .timer-box { 
+            text-align: center; 
+            margin-bottom: 50px; 
+        }
+        .timer-display { 
+            font-size: 1.1rem; 
+            font-weight: 300; 
+            color: #999; 
+            letter-spacing: 1.5px; 
+        }
+        .status-bar { 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            gap: 6px; 
+            margin-top: 15px; 
+            font-size: 10px; 
+            color: #b20000; 
+        }
+        .dot { 
+            width: 5px; 
+            height: 5px; 
+            background-color: #b20000; 
+            border-radius: 50%; 
+            animation: blink 1.5s infinite; 
+        }
+        @keyframes blink { 
+            0%, 100% { opacity: 1; } 
+            50% { opacity: 0.3; } 
+        }
+
+        /* 內容區塊主佈局 */
+        .content-container {
+            max-width: 350px;
+            width: 100%;
+            transition: opacity 0.5s ease; /* 漸變淡入淡出 */
+        }
+
+      .bio-section {
+            border-top: 1px solid #f8f8f8;
+            padding: 18px 0; /* 從 30px 縮小到 18px！上下大格子立刻完美縮骨 */
+        }
+
+        .section-title {
+            font-size: 11px;
+            color: #b20000;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            display: block;
+            font-weight: bold;
+        }
+
+        .bio-text {
+            font-size: 11px;
+            color: #999;
+            text-align: justify;
+            white-space: pre-wrap;
+        }
+
+        /* 🏷️ OTHERS 區專屬的淡淡標籤樣式 */
+        .bio-tags {
+            display: block; /* 強制換行 */
+            width: 100%;    /* 撐滿寬度 */
+            text-align: left; /* 靠左對齊 */
+            font-size: 11px;
+            color: #d5d3d3;
+            line-height: 1.4;
+        }
+
+        /* 連結樣式 */
+        .link-tag {
+            color: #b20000;
+            text-decoration: none;
+            background: #fff5f5;
+            padding: 2px 5px;
+            border-radius: 3px;
+            transition: 0.3s;
+        }
+        .link-tag:hover { 
+            background: #b20000; 
+            color: #fff; 
+        }
+
+        /* 🌌 最底置底：像素浮動小島群排版 */
+        .islands-footer-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end; /* 底部對齊 */
+            width: 100%;
+            max-width: 350px; /* 完美契合主容器寬度 */
+            margin: 40px auto 0 auto; /* 上方空出優雅的留白 */
+            padding: 0 10px;
+        }
+
+        .island-footer-item {
+            image-rendering: pixelated; /* 防止像素圖片縮放時變模糊 */
+            height: auto;
+            opacity: 0.9;
+        }
+
+        /* 摺疊面板樣式 */
+        details summary {
+            list-style: none;
+            cursor: pointer;
+            font-size: 11px;
+            color: #999;
+            padding: 5px 0;
+            transition: 0.3s;
+        }
+        details summary::-webkit-details-marker { 
+            display: none; 
+        }
+        details summary:hover { 
+            color: #b20000; 
+        }
+        
+        .dropdown-content {
+            position: relative;
+            padding-left: 15px;
+            font-size: 10.5px;
+            color: #bbb;
+            margin-top: 5px;
+            margin-bottom: 10px;
+        }
+        .dropdown-content::before {
+            content: "";
+            position: absolute;
+            left: 0; 
+            top: 5px;
+            width: 1.5px; 
+            height: 12px;
+            background-color: #b20000;
+            opacity: 0.5;
+        }
+        details[open] summary { 
+            color: #b20000; 
+            font-weight: bold; 
+        }
+
+        /* 🔐 密碼彈窗玄學樣式 */
+        .password-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background: rgba(255, 255, 255, 0.98); /* 極度純淨的白背景遮罩 */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+        .password-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .password-box {
+            text-align: center;
+            max-width: 280px;
+            width: 100%;
+        }
+        .password-title {
+            font-size: 11px;
+            color: #b20000;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        .password-input {
+            width: 100%;
+            border: none;
+            border-bottom: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+            outline: none;
+            letter-spacing: 4px;
+            margin-bottom: 15px;
+            background: transparent;
+        }
+        .password-input::placeholder {
+            letter-spacing: 1px;
+            color: #ccc;
+        }
+        .password-btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        .pw-btn {
+            font-size: 10px;
+            color: #999;
+            cursor: pointer;
+            letter-spacing: 1px;
+            border: none;
+            background: none;
+            outline: none;
+            padding: 5px 10px;
+            transition: 0.3s;
+        }
+        .pw-btn:hover {
+            color: #b20000;
+        }
+        .error-message {
+            color: #b20000;
+            font-size: 9px;
+            margin-top: 10px;
+            min-height: 15px;
+            letter-spacing: 1px;
+        }
+
+        /* 〰️ 溫馨虛線樣式 */
+        .dashed-line {
+            width: 100%;
+            border-top: 1px dashed #eeeeee;
+            margin: 25px 0;
+        }
+
+        /* 🐈‍⬛ 電子寵物互動區樣式 */
+        .pet-container {
+            text-align: center;
+            margin-bottom: 35px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+        .pet-bubble {
+            background: #fafafa;
+            border: 1px solid #f0f0f0;
+            border-radius: 12px;
+            padding: 8px 12px;
+            font-size: 11px;
+            color: #888888;
+            margin-bottom: 10px;
+            max-width: 240px;
+            text-align: center;
+            display: inline-block;
+            position: relative;
+            line-height: 1.4;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        .pet-bubble.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        /* 對話框小箭頭 */
+        .pet-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%) rotate(45deg);
+            width: 8px;
+            height: 8px;
+            background: #fafafa;
+            border-right: 1px solid #f0f0f0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .pet-aa {
+            font-family: monospace;
+            font-size: 15px;
+            color: #b9b7b7;
+            cursor: pointer;
+            user-select: none;
+            transition: transform 0.2s ease;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        .pet-aa:active {
+            transform: scale(0.9);
+        }
+        /* 🐟 餵食按鈕 */
+        .feed-btn {
+            border: none;
+            background: #fafafa;
+            color: #ccc;
+            font-size: 10px;
+            padding: 6px 14px;
+            border-radius: 20px;
+            cursor: pointer;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .feed-btn:hover {
+            background: #f5f5f5;
+            color: #b9b7b7;
+        }
