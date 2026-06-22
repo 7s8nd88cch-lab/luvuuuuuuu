@@ -131,14 +131,21 @@
             color: #fff; 
         }
 
-        /* 像素 GIF */
-        .pixel-gif {
-            width: 40px;
+        /* 🌌 最底置底：像素浮動小島群排版 */
+        .islands-footer-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end; /* 底部對齊 */
+            width: 100%;
+            max-width: 350px; /* 完美契合主容器寬度 */
+            margin: 80px auto 0 auto; /* 上方空出優雅的留白 */
+            padding: 0 10px;
+        }
+
+        .island-footer-item {
+            image-rendering: pixelated; /* 防止像素圖片縮放時變模糊 */
             height: auto;
-            image-rendering: pixelated;
-            opacity: 1;
-            display: block;
-            margin: 25px auto 0 auto;
+            opacity: 0.9;
         }
 
         /* 摺疊面板樣式 */
@@ -550,8 +557,23 @@
         </div>
     </div>
 
-    <!-- 最後的絕對留白與像素裝飾 -->
-    <img src="IMG_5045.gif" class="pixel-gif" style="margin-top: 100px;" alt="pixel decor">
+   <!-- 🌌 浮動小島群：最底置底裝飾 (五島聯排版 🚀) -->
+    <div class="islands-footer-row">
+        <!-- 1. 煙囪島 (最左) -->
+        <img src="IMG_5047.gif" class="island-footer-item" style="width: 10%; transform: translateY(-16px);" alt="chimney">
+        
+        <!-- 2. 鳥居島 (中左) -->
+        <img src="IMG_5045.gif" class="island-footer-item" style="width: 17%; transform: translateY(-4px);" alt="torii">
+        
+        <!-- 3. 主島 (中央小雪景，保留妳原本的 GIF 檔名) -->
+        <img src="IMG_5044.gif" class="island-footer-item" style="width: 42%; transform: translateY(0px);" alt="main snow scene">
+        
+        <!-- 4. 提燈島 (中右) -->
+        <img src="IMG_5046.gif" class="island-footer-item" style="width: 17%; transform: translateY(-5px);" alt="lantern">
+        
+        <!-- 5. 雪人島 (最右) -->
+        <img src="IMG_5048.gif" class="island-footer-item" style="width: 10%; transform: translateY(-11px);" alt="snowman">
+    </div>
 
    <script>
         // 設定妳的好友限定密碼！
