@@ -3,7 +3,7 @@
         const CORRECT_PASSWORD = "9696"; 
 
         // 倒數計時邏輯
-        const birthday = new Date("Nov 17, 2026 00:00:00").getTime();
+        const birthday = new Date("Nov 17, 2027 00:00:00").getTime();
         function updateTimer() {
             const now = new Date().getTime();
             const distance = birthday - now;
