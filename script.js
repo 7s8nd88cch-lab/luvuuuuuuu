@@ -80,47 +80,6 @@
             }, 500);
         }
 
-        // ==========================================
-        // 🐈‍⬛ 守護小精靈：觸摸碎碎念機制
-        // ==========================================
-        const PET_TALKS = [
-            "哼，愚蠢的人類！見到老夫還不快點跪下膜拜、溫柔地摸摸老夫的頭！",
-            "整個貓帝國都是老夫的領土，包括妳現在踩的這塊地板也都是老夫的喵！",
-            "看什麼看？再看老夫就把阿鐵的排球當成砲彈，轟炸妳的領地喔！💣",
-            "（炸毛）哇啊！不要突然戳老夫！這叫無禮！大不敬！",
-            "密碼？那種帝國機密怎麼可能隨便告訴妳這個外國人！除非妳拿秋刀魚來換喵！",
-            "今天老夫的心情是：全天下都要聽老夫的！🐾",
-            "哼，看在妳今天這麼誠心膜拜老夫的份上，特准妳摸老夫的下巴三秒鐘！不能再多了喵！",
-            "（抖了抖耳朵）好啦，看妳今天很累的樣子……老夫特許妳把頭埋進老夫肚子裡吸一口喵！",
-            "哼，老夫才沒有在偷聽 King Gnu 搖擺，老夫這是在親自巡視音樂界！♫",
-            "（抬頭挺胸）老夫今天也完美地唯我獨尊！妳，對就是妳，准妳當老夫的頭號鏟屎官喵！",
-            "爆料！主人今天根本沒在認真，又偷偷溜回本丸去找那個叫燭台切光忠的傢伙了喵！",
-            "好啦、好啦！老夫賞賜妳一記「帝國不失眠魔法」，今晚准妳秒睡，不准熬夜！",
-            "哼，天天泡在迪士尼扭曲仙境裡看那些魔法帥哥，當老夫瞎了喵？"
-        ];
-
-        let bubbleTimeout;
-
-        function petTheCat() {
-            const bubble = document.getElementById('pet-bubble');
-            
-            // 隨機撈一句話
-            const randomQuote = PET_TALKS[Math.floor(Math.random() * PET_TALKS.length)];
-            
-            bubble.innerHTML = randomQuote;
-            bubble.classList.add('show');
-            
-            // 點擊貓咪的彈跳小動畫
-            const cat = document.getElementById('pet-aa');
-            cat.style.transform = 'scale(1.2)';
-            setTimeout(() => { cat.style.transform = 'scale(1)'; }, 150);
-
-            // 5秒後台詞泡泡淡出
-            clearTimeout(bubbleTimeout);
-            bubbleTimeout = setTimeout(() => {
-                bubble.classList.remove('show');
-            }, 5000);
-        }
 
 
         // 初始化
